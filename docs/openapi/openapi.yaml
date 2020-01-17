@@ -150,9 +150,6 @@ components:
         client_id:
           type: string
           description: ID unico correspondiente al cliente
-        app:
-          type: string
-          description: Nombre de la aplicacion
         app_id:
           type: string
           description: ID unico correspondiente a la aplicacion
@@ -218,9 +215,9 @@ components:
           description: ID unico correspondiente a la aplicacion
         vesion:
           type: string
-          example: 1.0
+          example: 1.0.1
     
-    Data_input:
+    Data:
       required:
       - dev_id
       - timestamp
