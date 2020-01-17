@@ -21,7 +21,10 @@ app.get('/', (req, res, next) => {
     res.send({
         nombre: 'API Luminarias',
         descripcion: 'API de Telegestion de Luminarias de Alumbrado Publico en el contexto de la Fiesta Nacional del Sol 2020',
-        version: '1.0.0'
+        version: '1.0.0',
+        links:  [
+            {rel: 'Dispositivos', href: '/devices'}
+        ]
     })
 })
 
@@ -29,7 +32,10 @@ app.get('/', (req, res, next) => {
 const devicesRoute = require('./routes/devices')
 app.use('/devices', devicesRoute);
 
-
+// Documentacion de la API
+const swaggerUi = require('swagger-ui-express');
+const apiDocs = require('../docs/openapi');
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(apiDocs));
 
 // Establecemos el middleware para manejo de error 404
 app.use((req, res, next) => {

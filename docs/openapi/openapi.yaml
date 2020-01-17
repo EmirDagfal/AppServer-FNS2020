@@ -1,0 +1,299 @@
+openapi: 3.0.0
+info:
+  title: API FNS 2020
+  description: "API destinada al control del sistema de Telegestion para la demo de la Fiesta Nacional del Sol 2020"
+  contact:
+    email: emirdagfal@gmail.com
+  version: 1.0.0
+servers:
+- url: localhost:3000
+paths:
+  /devices:
+    get:
+      tags:
+      - Devices
+      summary: Obtener un listado de los dispositivos existentes
+      operationId: getDevices
+      responses:
+        200:
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+        500:
+          description: Hubo un error al obtener el listado de dispositivos
+          content: {}
+    post:
+      tags:
+      - Devices
+      summary: Agregar un nuevo dispositivo
+      operationId: createDevice
+      requestBody:
+        description: Datos del nuevo dispositivo
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+        required: true
+      responses:
+        201:
+          description: El dispositivo fue creado con éxito
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        400:
+          description: Los datos del dispositivo son incorrectos
+          content: {}
+        500:
+          description: Ocurrió un error al crear el dispositivo
+          content: {}
+          
+  /devices/{dev_id}:
+    get:
+      tags:
+      - Device_id
+      summary: Obtener datos del dispositivo especificado
+      operationId: getDevice
+      parameters:
+        - name: dev_id
+          in: path
+          required: true
+          description: Device ID
+          schema:
+            type : string
+
+      responses:
+        200:
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+        500:
+          description: Ocurrió un error al crear el dispositivo
+          content: {}
+    patch:
+      tags:
+      - Device_id
+      summary: Editar datos del dispositivo especificado
+      operationId: editDevice
+      parameters:
+        - name: dev_id
+          in: path
+          required: true
+          description: Device ID
+          schema:
+            type : string
+      responses:
+        200:
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+        500:
+          description: Ocurrió un error al editar el dispositivo
+          content: {}
+    delete:
+      tags:
+      - Device_id
+      summary: Elimina el dispositivo
+      operationId: deleteDevice
+      parameters:
+        - name: dev_id
+          in: path
+          required: true
+          description: Device ID
+          schema:
+            type : string
+      responses:
+        200:
+          description: Operación exitosa
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+        500:
+          description: Ocurrió un error al eliminar el dispositivo
+          content: {}
+
+
+
+components:
+  schemas:
+  
+    Device:
+      required:
+      - dev_id
+      - client
+      - type
+      type: object
+      properties:
+        dev_id:
+          type: string
+          description: ID unico correspondiente al dispositivo
+        type:
+          type: string
+          enum: [LORA]
+          description: Tipo de dispositivo segun su tecnologia de comunicacion
+          example: LORA
+        client_id:
+          type: string
+          description: ID unico correspondiente al cliente
+        app:
+          type: string
+          description: Nombre de la aplicacion
+        app_id:
+          type: string
+          description: ID unico correspondiente a la aplicacion
+        zone_id:
+          type: string
+          description: ID unico correspondiente a la zona
+        location:
+          required:
+          - lat
+          - lon
+          type: object
+          description: Ubicacion en latitud y longitud del dispositivo
+          properties:
+            lat:
+              type: number
+              format: float
+            lon:
+              type: number
+              format: float
+          example: [-31.534976 -68.540897]
+        EUI:
+          type: string
+          format: byte
+          description: Device-EUI unico ligado al dispositivo LoRa
+          example: 0080000004001FAB
+    
+    Client:
+      required:
+        - name
+        - client_id
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del cliente
+          example: Municipalidad de la Ciudad de San Juan
+        client_id:
+          type: string
+          description: ID unico correspondiente al cliente
+        apps:
+          type: array
+          items:
+            type: string
+            enum: [SmartCell-LoRa]
+            description: ID de las aplicaciones a las que esta suscripto el cliente
+            example: SmartCell-LoRa
+          
+          
+    App:
+      required:
+        - name
+        - app_id
+        - version
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la aplicacion
+          enum: [SmartCell-LoRa]
+          example: SmartCell-LoRa
+        app_id:
+          type: string
+          description: ID unico correspondiente a la aplicacion
+        vesion:
+          type: string
+          example: 1.0
+    
+    Data_input:
+      required:
+      - dev_id
+      - timestamp
+      type: object
+      properties:
+        dev_id:
+          type: string
+          description: ID unico ligado al dispositivo
+        timestamp:
+          type: number
+          format: double
+          description: Timestamp (en segundos) al momento de recibir el dato
+          example: 1579198761
+        power:
+          type: number
+          format: float
+          description: Consumo de potencia medida en el dispositivo
+          example: 215.7
+        energy:
+          type: number
+          format: unsigned int
+          description: Consumo de energia indicada por medidor externo
+          example: 152
+        dimming:
+          type: number
+          format: unsigned int
+          description: Niver de atenuacion de la luminaria
+          
+    Alert:
+      required:
+      - dev_id
+      - timestamp
+      - type
+      type: object
+      properties:
+        dev_id:
+          type: string
+          description: ID unico ligado al dispositivo
+        timestamp:
+          type: number
+          format: double
+          description: Timestamp (en segundos) al momento de recibir el dato
+          example: 1579198761
+        type:
+          type: string
+          enum: [POWER COMMUNICATION]
+          description: Tipo de alerta
+          example: POWER
+          
+    Zone:
+      required:
+      - name
+      - geofence
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la zona
+          example: Zona_1
+        geofence:
+          type: array
+          items:
+            type: object
+            required:
+            - lat
+            - lon
+            description: Ubicacion en latitud y longitud
+            properties:
+                lat:
+                  type: number
+                  format: float
+                lon:
+                  type: number
+                  format: float
+          description: Geofence de la zona (conjunto de ubicaciones [lat,log] que demarcan la zona)
+          example: [-31.534976 -68.540897]
