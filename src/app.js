@@ -32,6 +32,9 @@ app.get('/', (req, res, next) => {
 const devicesRoute = require('./routes/devices')
 app.use('/devices', devicesRoute);
 
+const appsRoute = require('./routes/apps')
+app.use('/apps', appsRoute);
+
 // Documentacion de la API
 const swaggerUi = require('swagger-ui-express');
 const apiDocs = require('../docs/openapi');

@@ -3,8 +3,6 @@ const mongoose = require('mongoose');
 const port = 27017;
 const server_url = 'http://localhost'
 const database_name = 'API_Luminarias'
-
-var mongoose = require('mongoose');
  
 mongoose.connect(`${server_url}:${port}/${database_name}`, function (err) {
  

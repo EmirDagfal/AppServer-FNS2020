@@ -1,18 +1,18 @@
-const mongoose = require('./'),
-const alertSchema = require('./schemas/device').alertSchema;
-const appSchema = require('./schemas/device').appSchema;
-const clientSchema = require('./schemas/device').clientSchema;
-const dataSchema = require('./schemas/device').dataSchema;
+const mongoose = require('./');
+const alertSchema = require('./schemas/alert').alertSchema;
+const appSchema = require('./schemas/app').appSchema;
+const clientSchema = require('./schemas/client').clientSchema;
+const dataSchema = require('./schemas/data').dataSchema;
 const deviceSchema = require('./schemas/device').deviceSchema;
-const zoneSchema = require('./schemas/device').zoneSchema;
+const zoneSchema = require('./schemas/zone').zoneSchema;
 
 const models = {
-    Alert: mongoose.model('Device', alertSchema),
-    App: mongoose.model('Device', appSchema),
-    Client: mongoose.model('Device', clientSchema),
-    Data: mongoose.model('Device', dataSchema),
+    Alert: mongoose.model('Alert', alertSchema),
+    App: mongoose.model('App', appSchema),
+    Client: mongoose.model('Client', clientSchema),
+    Data: mongoose.model('Data', dataSchema),
     Device: mongoose.model('Device', deviceSchema),
-    Zone: mongoose.model('Device', zoneSchema),
+    Zone: mongoose.model('Zone', zoneSchema),
 };
 
 module.exports = models;
