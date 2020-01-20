@@ -4,11 +4,11 @@ const { Router } = require('express')
 // Instanciamos un router
 const router = Router()
 
-// Ruta para obtener una lista de los dispositivos registrados
+// Ruta para obtener una lista de las alertas
 router.get('/', function (req, res, next) {
     res.send({
         links:  [
-            {rel: 'Dispositivos', href: '/devices/:dev_id'}
+            {rel: 'Alertas', href: '/alerts/:clinet_id'}
         ]
     })
 })
