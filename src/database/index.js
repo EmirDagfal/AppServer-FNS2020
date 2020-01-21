@@ -1,4 +1,6 @@
-const db = require('./');
+'use strict'
+
+const db = require('.');
 const alertSchema = require('./schemas/alert').alertSchema;
 const appSchema = require('./schemas/app').appSchema;
 const clientSchema = require('./schemas/client').clientSchema;

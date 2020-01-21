@@ -1,4 +1,6 @@
-const mongoose = require('..'),
+'use strict'
+
+const mongoose = require('..');
 Schema = mongoose.Schema;
 
 const schemas = {

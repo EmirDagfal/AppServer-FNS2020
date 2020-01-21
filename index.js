@@ -1,3 +1,5 @@
+'use strict'
+
 // Servidor
 const http = require('http')
 // Aplicacion de express
@@ -11,9 +13,9 @@ require('dotenv').config();
 
 // Conexion de la base de datos
 const mongoose = require('mongoose');
-console.log(chalk.bgMagenta(`${process.env.DB_URL}:${process.env.DB_PORT}/${process.env.DB_NAME}`));
+console.log(chalk.bgMagenta(`${ process.env.DB_URL || 'mongodb://localhost:27017' }/${ process.env.DB_NAME || 'luminarias' }`));
 
-mongoose.connect(`${process.env.DB_URL}:${process.env.DB_PORT}/${process.env.DB_NAME}`, function (err) {
+mongoose.connect(`${ process.env.DB_URL || 'mongodb://localhost:27017' }/${ process.env.DB_NAME || 'luminarias' }`, function (err) {
 
     // Error de conexion con base de datos
     if (err){
@@ -22,17 +24,17 @@ mongoose.connect(`${process.env.DB_URL}:${process.env.DB_PORT}/${process.env.DB_
     }
 
     // Conexion exitosa
-    console.log(chalk.black.bgGreen(`Base de datos ${process.env.DB_NAME} escuchando en ${process.env.DB_URL}:${process.env.DB_URL}`));
+    console.log(chalk.black.bgGreen(`Base de datos ${ process.env.DB_NAME || 'luminarias' } escuchando en ${ process.env.DB_URL || 'mongodb://localhost:27017' }/${ process.env.DB_NAME || 'luminarias' }`));
 
     // Creamos un nuevo servidor con nuestra app
     const server = http.createServer(app)
 
     server.on('listening', function() {
-        console.info(chalk.black.bgBlue(`Servidor escuchando en ${process.env.SERVER_URL+':'+process.env.SERVER_PORT}`))
+        console.info(chalk.black.bgBlue(`Servidor escuchando en ${process.env.SERVER_URL || 'http://localhost:'}` + `${process.env.SERVER_PORT || '3000'}`))
     })
 
     // Ponemos a escuchar nuestro servidor en el SERVER_PORT
-    server.listen(process.env.SERVER_PORT);
+    server.listen( process.env.SERVER_URL || '3000' );
 });
 
 

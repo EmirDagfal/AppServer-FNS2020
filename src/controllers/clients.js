@@ -1,3 +1,5 @@
+'use strict'
+
 // Importamos el submódulo Router
 const { Router } = require('express')
 
