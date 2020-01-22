@@ -1,44 +1,26 @@
 'use strict'
 
-// Importamos el submódulo Router
-const { Router } = require('express')
+// Creamos controlador
+const controller = {}
 
-// Importamos los modelos de la base de datos
-// const models = require('../database/models');
-// const mongoose = require('mongoose');
+// POST
+controller.post = function (req, res, next) {
+    console.log("Funcion post del controlador")
+}
 
-// Instanciamos un router
-const router = Router()
+// GET
+controller.get = function (req, res, next) {
+    console.log("Funcion get del controlador")
+}
 
-// Ruta para obtener una lista de las aplicaciones
-router.get('/', function (req, res, next) {
-    res.send({
-        links:  [
-            {rel: 'Aplicaciones', href: '/apps/:client_id'}
-        ]
-    })
-})
+// PATCH
+controller.patch = function (req, res, next) {
+    console.log("Funcion patch del controlador")
+}
 
-// Ruta para crear una aplicacion
-// router.post('/', function (req, res, next) {
-//     const data = req.body;
+// DELETE
+controller.delete = function (req, res, next) {
+    console.log("Funcion delete del controlador")
+}
 
-//     console.log(data);
-//     let newApp = new models.App ({
-//         name = data.name,
-//         _id: new mongoose.Types.ObjectId(),
-//         version = data.version
-//     });
-
-//     newApp.save(function(err) {
-//         if (err) throw err;
-         
-//         res.header('Location', `/apps/${newApp._id}`)
-//             .status(201)
-//             .send()
-//         console.log('Aplicacion creada exitosamente');
-//     });
-
-// })
-
-module.exports = router;
+module.exports = controller;

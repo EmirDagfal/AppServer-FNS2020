@@ -1,18 +1,26 @@
 'use strict'
 
-// Importamos el submódulo Router
-const { Router } = require('express')
+// Creamos controlador
+const controller = {}
 
-// Instanciamos un router
-const router = Router()
+// POST
+controller.post = function (req, res, next) {
+    console.log("Funcion post del controlador")
+}
 
-// Ruta para obtener una lista de las zonas
-router.get('/', function (req, res, next) {
-    res.send({
-        links:  [
-            {rel: 'Dispositivos', href: '/zones/:zone_id'}
-        ]
-    })
-})
+// GET
+controller.get = function (req, res, next) {
+    console.log("Funcion get del controlador")
+}
 
-module.exports = router;
+// PATCH
+controller.patch = function (req, res, next) {
+    console.log("Funcion patch del controlador")
+}
+
+// DELETE
+controller.delete = function (req, res, next) {
+    console.log("Funcion delete del controlador")
+}
+
+module.exports = controller;

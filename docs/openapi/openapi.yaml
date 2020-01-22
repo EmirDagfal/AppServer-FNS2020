@@ -302,13 +302,13 @@ components:
           description: Geofence de la zona (conjunto de ubicaciones [lat,log] que demarcan la zona)
           example: [-31.534976 -68.540897]
           
-    Zone_Grup:
+    Zone_Group:
         required:
         - name
         - zones
         type: object
         properties:
-          zone_grup_id:
+          zone_group_id:
             type: string
             description: ID unico correspondiente al grupo de zonas
           name:
