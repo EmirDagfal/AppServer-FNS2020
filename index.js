@@ -9,6 +9,7 @@ const chalk = require('chalk');
 
 
 // Lee las variables de entorno definidas en el archivo .env
+// El archivo .env-example muestra un ejemplo practico de definicion de variables de entorno
 require('dotenv').config();
 
 // Conexion de la base de datos
