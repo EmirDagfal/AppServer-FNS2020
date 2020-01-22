@@ -134,7 +134,6 @@ components:
   
     Alert:
       required:
-      - dev_id
       - timestamp
       - type
       type: object
@@ -142,49 +141,55 @@ components:
         dev_id:
           type: string
           description: ID unico ligado al dispositivo
-        timestamp:
-          type: number
-          format: double
-          description: Timestamp (en segundos) al momento de recibir el dato
-          example: 1579198761
         type:
           type: string
           enum: [POWER COMMUNICATION]
           description: Tipo de alerta
           example: POWER
+        viewed:
+          type: boolean
+          description: Alerta vista
+          example: false
+        timestamp:
+          type: number
+          format: double
+          description: Timestamp (en segundos) al momento de recibir el dato
+          example: 1579198761
     
     App:
       required:
         - name
-        - app_id
         - version
       type: object
       properties:
+        app_id:
+          type: string
+          description: ID unico correspondiente a la aplicacion
         name:
           type: string
           description: Nombre de la aplicacion
           enum: [SmartCell-LoRa]
           example: SmartCell-LoRa
-        app_id:
-          type: string
-          description: ID unico correspondiente a la aplicacion
         vesion:
           type: string
           example: 1.0.1
+        description:
+          type: string
+          description: Descripcion breve de la aplicacion
+          example: Aplicacion de luminarias publicas controladas por LoRaWAN
     
     Client:
       required:
         - name
-        - client_id
       type: object
       properties:
+        client_id:
+          type: string
+          description: ID unico correspondiente al cliente
         name:
           type: string
           description: Nombre del cliente
           example: Municipalidad de la Ciudad de San Juan
-        client_id:
-          type: string
-          description: ID unico correspondiente al cliente
         apps:
           type: array
           items:
@@ -202,11 +207,6 @@ components:
         dev_id:
           type: string
           description: ID unico ligado al dispositivo
-        timestamp:
-          type: number
-          format: double
-          description: Timestamp (en segundos) al momento de recibir el dato
-          example: 1579198761
         power:
           type: number
           format: float
@@ -221,11 +221,16 @@ components:
           type: number
           format: unsigned int
           description: Niver de atenuacion de la luz
+        timestamp:
+          type: number
+          format: double
+          description: Timestamp (en segundos) al momento de recibir el dato
+          example: 1579198761
           
     Device:
       required:
-      - dev_id
-      - client
+      - app_id
+      - client_id
       - type
       type: object
       properties:
@@ -237,12 +242,12 @@ components:
           enum: [LORA]
           description: Tipo de dispositivo segun su tecnologia de comunicacion
           example: LORA
-        client_id:
-          type: string
-          description: ID unico correspondiente al cliente
         app_id:
           type: string
           description: ID unico correspondiente a la aplicacion
+        client_id:
+          type: string
+          description: ID unico correspondiente al cliente
         zone_id:
           type: string
           description: ID unico correspondiente a la zona
@@ -272,6 +277,9 @@ components:
       - geofence
       type: object
       properties:
+        zone_id:
+          type: string
+          description: ID unico correspondiente a la zona
         name:
           type: string
           description: Nombre de la zona
@@ -300,6 +308,9 @@ components:
         - zones
         type: object
         properties:
+          zone_grup_id:
+            type: string
+            description: ID unico correspondiente al grupo de zonas
           name:
             type: string
             description: Nombre del grupo de zonas
