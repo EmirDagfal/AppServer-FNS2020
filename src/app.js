@@ -25,7 +25,12 @@ app.get('/', (req, res, next) => {
         descripcion: 'API de Telegestion de Luminarias de Alumbrado Publico en el contexto de la Fiesta Nacional del Sol 2020',
         version: '1.0.0',
         links:  [
-            {rel: 'Dispositivos', href: '/devices'}
+            {rel: 'Documentacion', href: '/docs'},
+            {rel: 'Alertas', href: '/alerts'},
+            {rel: 'Aplicaciones', href: '/apps'},
+            {rel: 'Clientes', href: '/clients'},
+            {rel: 'Dispositivos', href: '/devices'},
+            {rel: 'Zonas', href: '/zones'},
         ]
     })
 })
