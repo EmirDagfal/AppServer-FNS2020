@@ -132,6 +132,96 @@ paths:
 components:
   schemas:
   
+    Alert:
+      required:
+      - dev_id
+      - timestamp
+      - type
+      type: object
+      properties:
+        dev_id:
+          type: string
+          description: ID unico ligado al dispositivo
+        timestamp:
+          type: number
+          format: double
+          description: Timestamp (en segundos) al momento de recibir el dato
+          example: 1579198761
+        type:
+          type: string
+          enum: [POWER COMMUNICATION]
+          description: Tipo de alerta
+          example: POWER
+    
+    App:
+      required:
+        - name
+        - app_id
+        - version
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la aplicacion
+          enum: [SmartCell-LoRa]
+          example: SmartCell-LoRa
+        app_id:
+          type: string
+          description: ID unico correspondiente a la aplicacion
+        vesion:
+          type: string
+          example: 1.0.1
+    
+    Client:
+      required:
+        - name
+        - client_id
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del cliente
+          example: Municipalidad de la Ciudad de San Juan
+        client_id:
+          type: string
+          description: ID unico correspondiente al cliente
+        apps:
+          type: array
+          items:
+            type: string
+            enum: [SmartCell-LoRa]
+            description: ID de las aplicaciones a las que esta suscripto el cliente
+            example: SmartCell-LoRa
+    
+    Data:
+      required:
+      - dev_id
+      - timestamp
+      type: object
+      properties:
+        dev_id:
+          type: string
+          description: ID unico ligado al dispositivo
+        timestamp:
+          type: number
+          format: double
+          description: Timestamp (en segundos) al momento de recibir el dato
+          example: 1579198761
+        power:
+          type: number
+          format: float
+          description: Consumo de potencia medida en el dispositivo
+          example: 215.7
+        energy:
+          type: number
+          format: unsigned int
+          description: Consumo de energia indicada por medidor externo
+          example: 152
+        dimming:
+          type: number
+          format: unsigned int
+          description: Niver de atenuacion de la luz
+          
     Device:
       required:
       - dev_id
@@ -175,97 +265,6 @@ components:
           format: byte
           description: Device-EUI unico ligado al dispositivo LoRa
           example: 0080000004001FAB
-    
-    Client:
-      required:
-        - name
-        - client_id
-      type: object
-      properties:
-        name:
-          type: string
-          description: Nombre del cliente
-          example: Municipalidad de la Ciudad de San Juan
-        client_id:
-          type: string
-          description: ID unico correspondiente al cliente
-        apps:
-          type: array
-          items:
-            type: string
-            enum: [SmartCell-LoRa]
-            description: ID de las aplicaciones a las que esta suscripto el cliente
-            example: SmartCell-LoRa
-          
-          
-    App:
-      required:
-        - name
-        - app_id
-        - version
-      type: object
-      properties:
-        name:
-          type: string
-          description: Nombre de la aplicacion
-          enum: [SmartCell-LoRa]
-          example: SmartCell-LoRa
-        app_id:
-          type: string
-          description: ID unico correspondiente a la aplicacion
-        vesion:
-          type: string
-          example: 1.0.1
-    
-    Data:
-      required:
-      - dev_id
-      - timestamp
-      type: object
-      properties:
-        dev_id:
-          type: string
-          description: ID unico ligado al dispositivo
-        timestamp:
-          type: number
-          format: double
-          description: Timestamp (en segundos) al momento de recibir el dato
-          example: 1579198761
-        power:
-          type: number
-          format: float
-          description: Consumo de potencia medida en el dispositivo
-          example: 215.7
-        energy:
-          type: number
-          format: unsigned int
-          description: Consumo de energia indicada por medidor externo
-          example: 152
-        dimming:
-          type: number
-          format: unsigned int
-          description: Niver de atenuacion de la luminaria
-          
-    Alert:
-      required:
-      - dev_id
-      - timestamp
-      - type
-      type: object
-      properties:
-        dev_id:
-          type: string
-          description: ID unico ligado al dispositivo
-        timestamp:
-          type: number
-          format: double
-          description: Timestamp (en segundos) al momento de recibir el dato
-          example: 1579198761
-        type:
-          type: string
-          enum: [POWER COMMUNICATION]
-          description: Tipo de alerta
-          example: POWER
           
     Zone:
       required:
@@ -294,6 +293,7 @@ components:
                   format: float
           description: Geofence de la zona (conjunto de ubicaciones [lat,log] que demarcan la zona)
           example: [-31.534976 -68.540897]
+          
     Zone_Grup:
         required:
         - name
