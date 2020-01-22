@@ -294,3 +294,23 @@ components:
                   format: float
           description: Geofence de la zona (conjunto de ubicaciones [lat,log] que demarcan la zona)
           example: [-31.534976 -68.540897]
+    Zone_Grup:
+        required:
+        - name
+        - zones
+        type: object
+        properties:
+          name:
+            type: string
+            description: Nombre del grupo de zonas
+            example: Grupo A
+          zones:
+            type: array
+            items:
+              type: object
+              description: Conjunto de zonas contenidas en el grupo
+              properties:
+                  zone_id:
+                    type: string
+                    description: ID unico de la zona
+                    example: [zone_id_1, zone_id_2, zone_id_3]
