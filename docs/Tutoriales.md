@@ -13,5 +13,6 @@ Instalar:
 Links:
 - https://www.youtube.com/watch?v=UcO5WES8j6s
 - https://www.youtube.com/watch?v=2246l6G-1GI
+- https://mongoosejs.com/docs/schematypes.html
 Dependencias:
 - mongoose

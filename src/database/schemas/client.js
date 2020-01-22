@@ -6,8 +6,8 @@ Schema = mongoose.Schema;
 const schemas = {
     clientSchema: new Schema({
         _id: mongoose.Schema.Types.ObjectId,
-        name: String,
-        apps: [{ 
+        name: {type: String, unique: true},   // unico
+        apps: [{
             type: mongoose.Schema.Types.ObjectId, 
             ref: 'App'
         }],
