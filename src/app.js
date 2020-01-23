@@ -34,13 +34,23 @@ app.get('/', (req, res, next) => {
         ]
     })
 })
+app.options('/', (req, res, next) => {
+    res.header('Allow', 'GET').send();
+})
 
 // Redireccionamos las rutas aqui
-const devicesRoute = require('./routes/devices')
-app.use('/devices', devicesRoute);
-
+const alertsRoute = require('./routes/alerts')
+app.use('/alerts', alertsRoute);
 const appsRoute = require('./routes/apps')
 app.use('/apps', appsRoute);
+const clientsRoute = require('./routes/clients')
+app.use('/clients', clientsRoute);
+const devicesRoute = require('./routes/devices')
+app.use('/devices', devicesRoute);
+const zonesRoute = require('./routes/zones')
+app.use('/zones', zonesRoute);
+const zone_groupsRoute = require('./routes/zone_groups')
+app.use('/zone_groups', zone_groupsRoute);
 
 // Documentacion de la API
 const swaggerUi = require('swagger-ui-express');

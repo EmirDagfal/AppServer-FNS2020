@@ -1,8 +1,10 @@
 # Tareas a realizar
+
 ## Pendientes
-1. Estructuracion de las rutas faltantes
-2. Definicion de los cantroladores
-3. Estructuracion final de los esquemas de la base de datos
+[ ] Estructuracion de las rutas faltantes
+[ ] Definicion de los controladores
+[x] Estructuracion de los esquemas de la base de datos
+[ ] Prueba basica almacenamiento en DB
 
 ## Para una futura version (1.1.0)
 1. Cambio de estructura del recurso 'Zone':
