@@ -15,9 +15,14 @@ router.options('/', (req, res, next) => {
 router.get('/', function (req, res, next) {
     res.send({
         links:  [
-            {rel: 'Dispositivos', href: '/devices/:dev_id'}
+            {rel: 'Dispositivo', href: '/devices/:dev_id'}
         ]
     })
+})
+
+// Ruta para obtener informacion de un dispositivo especifico
+router.get('/', function (req, res, next) {
+
 })
 
 module.exports = router;

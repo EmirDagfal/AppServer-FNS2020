@@ -8,16 +8,16 @@ const router = Router()
 
 // Acciones permitidas sobre la ruta
 router.options('/', (req, res, next) => {
-    res.header('Allow', 'PUSH, GET, PATCH, DELETE').send();
+    res.header('Allow', 'POST, GET, PATCH, DELETE').send();
 })
 
-// Ruta para obtener una lista de las alertas
-router.get('/', function (req, res, next) {
-    res.send({
-        links:  [
-            {rel: 'Home', href: '../'}
-        ]
-    })
-})
+// Importamos los controladores
+const controller = require('../controllers/alerts')
+
+// Rutas principales
+router.post('/', controller.post)
+router.get('/', controller.get)
+router.patch('/', controller.patch)
+router.delete('/', controller.delete)
 
 module.exports = router;

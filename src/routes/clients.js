@@ -15,9 +15,14 @@ router.options('/', (req, res, next) => {
 router.get('/', function (req, res, next) {
     res.send({
         links:  [
-            {rel: 'Clientes', href: '/clients/:client_id'}
+            {rel: 'Cliente', href: '/clients/:client_id'}
         ]
     })
+})
+
+// Ruta para obtener informacion de un cliente especifico
+router.get('/', function (req, res, next) {
+
 })
 
 module.exports = router;

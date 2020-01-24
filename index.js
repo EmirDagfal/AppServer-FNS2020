@@ -14,7 +14,7 @@ require('dotenv').config();
 
 // Conexion de la base de datos
 const mongoose = require('mongoose');
-console.log(chalk.bgMagenta(`${ process.env.DB_URL || 'mongodb://localhost:27017' }/${ process.env.DB_NAME || 'luminarias' }`));
+//// console.log(chalk.magenta(`${ process.env.DB_URL || 'mongodb://localhost:27017' }/${ process.env.DB_NAME || 'luminarias' }`));
 
 mongoose.connect(`${ process.env.DB_URL || 'mongodb://localhost:27017' }/${ process.env.DB_NAME || 'luminarias' }`, function (err) {
 
@@ -31,7 +31,7 @@ mongoose.connect(`${ process.env.DB_URL || 'mongodb://localhost:27017' }/${ proc
     const server = http.createServer(app)
 
     server.on('listening', function() {
-        console.info(chalk.black.bgBlue(`Servidor escuchando en ${process.env.SERVER_URL || 'http://localhost:'}` + `${process.env.SERVER_PORT || '3000'}`))
+        console.info(chalk.black.bgBlue(`Servidor escuchando en ${process.env.SERVER_URL || 'http://localhost'}` + ':' + `${process.env.SERVER_PORT || '3000'}`))
     })
 
     // Ponemos a escuchar nuestro servidor en el SERVER_PORT

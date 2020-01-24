@@ -20,4 +20,9 @@ router.get('/', function (req, res, next) {
     })
 })
 
+// Ruta para obtener informacion de una zona especifica
+router.get('/', function (req, res, next) {
+
+})
+
 module.exports = router;
