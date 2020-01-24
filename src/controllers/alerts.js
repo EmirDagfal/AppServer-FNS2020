@@ -22,19 +22,19 @@ controller.post = function (req, res, next)
 // GET
 controller.get = function (req, res, next) {
     log("Funcion get del controlador")
-    next()
+    alert.read(req, res, next)
 }
 
 // PATCH
 controller.patch = function (req, res, next) {
     log("Funcion patch del controlador")
-    next()
+    alert.update(req, res, next)
 }
 
 // DELETE
 controller.delete = function (req, res, next) {
     log("Funcion delete del controlador")
-    next()
+    alert.delete(req, res, next)
 }
 
 module.exports = controller;

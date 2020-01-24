@@ -49,5 +49,35 @@ alert.create = function(req, res, next){
     
 }
 
+// Leemos aleta/s
+alert.read = function(req, res, next){
+    log('Leyendo alertas')
+    let alertConsult = {}
+    const query = req.query;
+
+    if (Object.keys(query).length > 0) {
+        for (let param in query) {
+            log(query[param])
+            alertConsult[param] = query[param]
+        }
+    }
+    // Seguir por aqui!
+    // let instance = new alertModel();
+    // instance.find(alertConsult, function (err, alerReaded) {
+    //     log(err)
+    //     log(alerReaded)
+    // })
+}
+
+// Actualizo una alerta
+alert.update = function(req, res, next){
+
+}
+
+// Elimino una alerta
+alert.delete = function(req, res, next){
+
+}
+
 module.exports = alert;
 // module.exports = alertModel;
