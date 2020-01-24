@@ -1,12 +1,11 @@
 'use strict'
 
-const mongoose = require('..');
-Schema = mongoose.Schema;
+const Schema = require('mongoose').Schema;
 
 const schemas = {
     dataSchema: new Schema({
         dev_id: {
-            type: mongoose.Schema.Types.ObjectId, 
+            type: Schema.Types.ObjectId, 
             ref: 'Device'
         },
         // TODO:
