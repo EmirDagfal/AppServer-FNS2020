@@ -5,7 +5,7 @@ const controller = {}
 // Logger
 const log = require('../modules/controllers-log');
 // Modelo
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 const alert = require('../database/schemas/alert')
 // const Alert = require('../database').Alert;
 
@@ -16,20 +16,7 @@ const alert = require('../database/schemas/alert')
 controller.post = function (req, res, next)
 {
     log("Funcion post del controlador")
-    // console.log(req.body)
     alert.create(req, res, next)
-    
-    next = function(err, alertStored){
-        log(err)
-        log(alertStored)
-        if(err){
-            log('Error al crear la alerta')
-            res.status(500).send({message: `Error al crear la alerta: ${err}`})
-        }
-        log('Alerta creada exitosamente')
-        console.log(alertStored)
-        res.status(201).send(alertStored)
-    }
 }
 
 // GET

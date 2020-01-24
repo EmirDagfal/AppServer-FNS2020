@@ -30,16 +30,24 @@ alert.create = function(req, res, next){
     log('Creando alerta')
 
     let body = req.body;
-    // console.log(body);
 
     let instance = new alertModel();
     instance.type = body.type;
     instance.viewed = body.viewed;
-    // console.log(instance)
     
-    
-    instance.save(next)
+    instance.save((err, alertStored) => {
+        log(err)
+        log(alertStored)
+        if(err){
+            log('Error al crear la alerta')
+            res.status(500).send({message: `Error al crear la alerta: ${err}`})
+        }
+        log('Alerta creada exitosamente')
+        console.log(alertStored)
+        res.status(201).send(alertStored)
+    })
     
 }
 
 module.exports = alert;
+// module.exports = alertModel;
