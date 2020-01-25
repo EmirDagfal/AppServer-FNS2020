@@ -134,8 +134,9 @@ components:
   
     Alert:
       required:
-      - timestamp
+      - dev_id
       - type
+      - timestamp
       type: object
       properties:
         dev_id:
@@ -158,6 +159,7 @@ components:
     
     App:
       required:
+        - app_id
         - name
         - version
       type: object
@@ -180,6 +182,7 @@ components:
     
     Client:
       required:
+        - client_id
         - name
       type: object
       properties:
@@ -229,6 +232,7 @@ components:
           
     Device:
       required:
+      - dev_id
       - app_id
       - client_id
       - type
@@ -248,9 +252,6 @@ components:
         client_id:
           type: string
           description: ID unico correspondiente al cliente
-        zone_id:
-          type: string
-          description: ID unico correspondiente a la zona
         location:
           required:
           - lat
@@ -273,6 +274,7 @@ components:
           
     Zone:
       required:
+      - zone_id
       - name
       - geofence
       type: object
@@ -304,6 +306,7 @@ components:
           
     Zone_Group:
         required:
+        - zone_group_id
         - name
         - zones
         type: object
@@ -319,9 +322,9 @@ components:
             type: array
             items:
               type: object
-              description: Conjunto de zonas contenidas en el grupo
               properties:
                   zone_id:
                     type: string
-                    description: ID unico de la zona
-                    example: [zone_id_1, zone_id_2, zone_id_3]
+              description: Arreglo de zonas
+              example: [zone_id_1, zone_id_2, zone_id_3]
+              
