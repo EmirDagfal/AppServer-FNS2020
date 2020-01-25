@@ -12,25 +12,25 @@ const alert = require('../database/schemas/alert')
 // POST
 controller.post = function (req, res, next)
 {
-    log("Funcion post del controlador")
+    log.info("Funcion post del controlador")
     alert.create(req, res, next)
 }
 
 // GET
 controller.get = function (req, res, next) {
-    log("Funcion get del controlador")
+    log.info("Funcion get del controlador")
     alert.read(req, res, next)
 }
 
 // PATCH
 controller.patch = function (req, res, next) {
-    log("Funcion patch del controlador")
+    log.info("Funcion patch del controlador")
     alert.update(req, res, next)
 }
 
 // DELETE
 controller.delete = function (req, res, next) {
-    log("Funcion delete del controlador")
+    log.info("Funcion delete del controlador")
     alert.delete(req, res, next)
 }
 
