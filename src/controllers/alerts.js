@@ -10,9 +10,6 @@ const alert = require('../database/schemas/alert')
 // const Alert = require('../database').Alert;
 
 // POST
-/**
- * Creamos una alerta y la almacenamos en la base de datos
- */
 controller.post = function (req, res, next)
 {
     log("Funcion post del controlador")

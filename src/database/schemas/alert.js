@@ -11,9 +11,10 @@ const log = require('../../modules/database-log');
 const alertSchema = new mongoose.Schema({
     dev_id: { 
         type: ObjectId,
-        ref: 'Devices'
+        ref: 'Devices',
+        //required: true,
     },
-    type: {type: String, uppercase: true, enum: ['POWER', 'COMMUNICATION']}, // [POWER COMMUNICATION]
+    type: {type: String, uppercase: true, enum: ['POWER', 'COMMUNICATION'], default: 'POWER'},
     viewed: {type: Boolean, default: false},
     timestamp: {
         type: Date,
@@ -30,23 +31,21 @@ alert.create = function(req, res, next){
     log('Creando alerta')
 
     let body = req.body;
-
     let instance = new alertModel();
     instance.type = body.type;
     instance.viewed = body.viewed;
-    
+
     instance.save((err, alertStored) => {
         log(err)
         log(alertStored)
         if(err){
             log('Error al crear la alerta')
-            res.status(500).send({message: `Error al crear la alerta: ${err}`})
+            res.status(500).send(err)
+        }else{
+            log('Alerta creada exitosamente')
+            res.status(201).send(alertStored)
         }
-        log('Alerta creada exitosamente')
-        console.log(alertStored)
-        res.status(201).send(alertStored)
     })
-    
 }
 
 // Leemos aleta/s
@@ -57,16 +56,19 @@ alert.read = function(req, res, next){
 
     if (Object.keys(query).length > 0) {
         for (let param in query) {
-            log(query[param])
             alertConsult[param] = query[param]
         }
     }
-    // Seguir por aqui!
-    // let instance = new alertModel();
-    // instance.find(alertConsult, function (err, alerReaded) {
-    //     log(err)
-    //     log(alerReaded)
-    // })
+
+    alertModel.find(alertConsult, function (err, alerRead) {
+        if(err){
+            log('Error al leer las alertas')
+            res.status(500).send(err)
+        }else{
+            log('Alertas leidas exitosamente')
+            res.status(200).send(alerRead)
+        }
+    })
 }
 
 // Actualizo una alerta
