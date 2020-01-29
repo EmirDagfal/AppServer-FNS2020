@@ -1,11 +1,11 @@
 # Tareas a realizar
 
 ## Pendientes
-[ ] Estructuracion de las rutas faltantes
-[ ] Definicion de los controladores
+[x] Estructuracion de las rutas faltantes
+[x] Definicion de los controladores
 [x] Estructuracion de los esquemas de la base de datos
-[ ] Definicion de los modelos de la BD
-[ ] Prueba basica almacenamiento en BD
+[x] Definicion de los modelos de la BD
+[x] Prueba basica almacenamiento en BD
 
 ## Para una futura version (1.1.0)
 1. Cambio de estructura del recurso 'Zone':

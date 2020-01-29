@@ -15,8 +15,8 @@ router.options('/', (req, res, next) => {
 })
 router.post('/', controller.post)
 router.get('/', controller.get)
-// router.patch('/', controller.patch)
-// router.delete('/', controller.delete)
+router.patch('/', controller.patch)
+router.delete('/', controller.delete)
 
 // Rutas de alertas especificas
 router.options('/:_id', (req, res, next) => {

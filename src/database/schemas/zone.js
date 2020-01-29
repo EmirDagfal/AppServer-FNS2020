@@ -6,6 +6,7 @@ const schemas = {
     zoneSchema: new Schema({
         _id: Schema.Types.ObjectId,
         name: {type: String, unique: true},   // unico
+        devices: [{type: Schema.Types.ObjectId, ref: 'Device'}],
         geofence: [{ 
             lat: Number,
             lon: Number

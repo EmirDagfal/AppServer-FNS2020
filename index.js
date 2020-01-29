@@ -14,7 +14,6 @@ require('dotenv').config();
 
 // Conexion de la base de datos
 const mongoose = require('mongoose');
-//// console.log(chalk.magenta(`${ process.env.DB_URL || 'mongodb://localhost:27017' }/${ process.env.DB_NAME || 'luminarias' }`));
 
 mongoose.connect(`${ process.env.DB_URL || 'mongodb://localhost:27017' }/${ process.env.DB_NAME || 'luminarias' }`, function (err) {
 
