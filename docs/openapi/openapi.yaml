@@ -34,6 +34,51 @@ paths:
       tags: [Alerts]
       summary: Obtener alertas
       operationId: getAlerts
+      parameters:
+      - name: dev_id
+        in: query
+        schema:
+          type: string
+        description: ID ligado al dispositivo
+        required: false
+      - name: type
+        in: query
+        schema:
+          type: string
+          enum: [POWER COMMUNICATION]
+        description: Tipo de alerta
+        example: POWER
+        required: false
+      - name: code
+        in: query
+        schema:
+          type: number
+        description: Codigo de alerta
+        example: 101
+        required: false
+      - name: viewed
+        in: query
+        schema:
+          type: boolean
+        description: Alerta vista
+        example: false
+        required: false
+      - name: from
+        in: query
+        schema:
+          type: string
+          format: date-time
+        description: Desde
+        example: '2018-03-20T09:12:28Z'
+        required: false
+      - name: to
+        in: query
+        schema:
+          type: string
+          format: date-time
+        description: Hasta
+        example: '2018-03-20T12:12:28Z'
+        required: false
       responses:
         201:
           description: Recurso obtenido exitosamente
@@ -46,32 +91,7 @@ paths:
         500:
           description: Error al obtener el recurso
           content: {}
-    patch:
-      tags: [Alerts]
-      summary: Actualizar alertas
-      operationId: patchAlerts
-      responses:
-        200:
-          description: Recurso actualizado exitosamente
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Alert'
-        500:
-          description: Error al actualizar el recurso
-          content: {}
-    delete:
-      tags: [Alerts]
-      summary: Eliminar alertas
-      operationId: deleteAlerts
-      responses:
-        202:
-          description: Recurso eliminado exitosamente (response sin contenido)
-          content: {}
-        500:
-          description: Error al eliminar el recurso
-          content: {}
-  
+
   /alerts/{_id}:
     parameters:
       - in: path
@@ -82,26 +102,9 @@ paths:
           format: uuid
           example: 5e1a0651741b255ddda996c4
         required: true
-    post:
-      tags: [Alerts]
-      summary: Crear una alerta
-      operationId: postAlert
-      responses:
-        201:
-          description: Recurso creado exitosamente
-          content:
-            application/json:
-              schema:
-                  $ref: '#/components/schemas/Alert'
-        400:
-          description: Datos incorrectos o mala sintaxis
-          content: {}
-        500:
-          description: Error al crear el recurso
-          content: {}
     get:
       tags: [Alerts]
-      summary: Obtener alertas
+      summary: Obtener alerta
       operationId: getAlert
       responses:
         201:
@@ -117,7 +120,7 @@ paths:
           content: {}
     patch:
       tags: [Alerts]
-      summary: Actualizar alertas
+      summary: Actualizar alerta
       operationId: patchAlert
       responses:
         200:
@@ -131,16 +134,16 @@ paths:
           content: {}
     delete:
       tags: [Alerts]
-      summary: Eliminar alertas
+      summary: Eliminar alerta
       operationId: deleteAlert
       responses:
         202:
-          description: Recurso eliminado exitosamente (response sin contenido)
+          description: Recurso eliminado exitosamente
           content: {}
         500:
           description: Error al eliminar el recurso
           content: {}
-  
+
   /apps:
     post:
       tags: [Apps]
@@ -163,6 +166,22 @@ paths:
       tags: [Apps]
       summary: Obtener aplicaciónes
       operationId: getApps
+      parameters:
+      - name: name
+        in: query
+        schema:
+          type: string
+          enum: [SmartCell-LoRa]
+        description: Nombre de la aplicacion
+        example: SmartCell-LoRa
+        required: false
+      - name: version
+        in: query
+        schema:
+          type: string
+        description: Version de la aplicacion
+        example: '1.0.1'
+        required: false
       responses:
         201:
           description: Recurso obtenido exitosamente
@@ -175,32 +194,7 @@ paths:
         500:
           description: Error al obtener el recurso
           content: {}
-    patch:
-      tags: [Apps]
-      summary: Actualizar aplicaciónes
-      operationId: patchApps
-      responses:
-        200:
-          description: Recurso actualizado exitosamente
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/App'
-        500:
-          description: Error al actualizar el recurso
-          content: {}
-    delete:
-      tags: [Apps]
-      summary: Eliminar aplicaciónes
-      operationId: deleteApps
-      responses:
-        202:
-          description: Recurso eliminado exitosamente (response sin contenido)
-          content: {}
-        500:
-          description: Error al eliminar el recurso
-          content: {}
-  
+
   /apps/{_id}:
     parameters:
       - in: path
@@ -211,26 +205,9 @@ paths:
           format: uuid
           example: 5e1a0651741b255ddda996c4
         required: true
-    post:
-      tags: [Apps]
-      summary: Crear una aplicación
-      operationId: postApp
-      responses:
-        201:
-          description: Recurso creado exitosamente
-          content:
-            application/json:
-              schema:
-                  $ref: '#/components/schemas/App'
-        400:
-          description: Datos incorrectos o mala sintaxis
-          content: {}
-        500:
-          description: Error al crear el recurso
-          content: {}
     get:
       tags: [Apps]
-      summary: Obtener aplicaciónes
+      summary: Obtener aplicación
       operationId: getApp
       responses:
         201:
@@ -246,7 +223,7 @@ paths:
           content: {}
     patch:
       tags: [Apps]
-      summary: Actualizar aplicaciónes
+      summary: Actualizar aplicación
       operationId: patchApp
       responses:
         200:
@@ -260,16 +237,16 @@ paths:
           content: {}
     delete:
       tags: [Apps]
-      summary: Eliminar aplicaciónes
+      summary: Eliminar aplicación
       operationId: deleteApp
       responses:
         202:
-          description: Recurso eliminado exitosamente (response sin contenido)
+          description: Recurso eliminado exitosamente
           content: {}
         500:
           description: Error al eliminar el recurso
           content: {}
-  
+
   /client:
     post:
       tags: [Clients]
@@ -292,6 +269,14 @@ paths:
       tags: [Clients]
       summary: Obtener clientes
       operationId: getClients
+      parameters:
+      - name: name
+        in: query
+        schema:
+          type: string
+        description: Nombre del cliente
+        example: Municipalidad de la Ciudad de San Juan
+        required: false
       responses:
         201:
           description: Recurso obtenido exitosamente
@@ -304,32 +289,7 @@ paths:
         500:
           description: Error al obtener el recurso
           content: {}
-    patch:
-      tags: [Clients]
-      summary: Actualizar clientes
-      operationId: patchClients
-      responses:
-        200:
-          description: Recurso actualizado exitosamente
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Client'
-        500:
-          description: Error al actualizar el recurso
-          content: {}
-    delete:
-      tags: [Clients]
-      summary: Eliminar clientes
-      operationId: deleteClients
-      responses:
-        202:
-          description: Recurso eliminado exitosamente (response sin contenido)
-          content: {}
-        500:
-          description: Error al eliminar el recurso
-          content: {}
-  
+
   /client/{_id}:
     parameters:
       - in: path
@@ -340,26 +300,9 @@ paths:
           format: uuid
           example: 5e1a0651741b255ddda996c4
         required: true
-    post:
-      tags: [Clients]
-      summary: Crear un cliente
-      operationId: postClient
-      responses:
-        201:
-          description: Recurso creado exitosamente
-          content:
-            application/json:
-              schema:
-                  $ref: '#/components/schemas/Client'
-        400:
-          description: Datos incorrectos o mala sintaxis
-          content: {}
-        500:
-          description: Error al crear el recurso
-          content: {}
     get:
       tags: [Clients]
-      summary: Obtener clientes
+      summary: Obtener cliente
       operationId: getClient
       responses:
         201:
@@ -375,7 +318,7 @@ paths:
           content: {}
     patch:
       tags: [Clients]
-      summary: Actualizar clientes
+      summary: Actualizar cliente
       operationId: patchClient
       responses:
         200:
@@ -389,146 +332,16 @@ paths:
           content: {}
     delete:
       tags: [Clients]
-      summary: Eliminar clientes
+      summary: Eliminar cliente
       operationId: deleteClient
       responses:
         202:
-          description: Recurso eliminado exitosamente (response sin contenido)
+          description: Recurso eliminado exitosamente
           content: {}
         500:
           description: Error al eliminar el recurso
           content: {}
-
-  /devices:
-    post:
-      tags: [Devices]
-      summary: Crear un dispositivo
-      operationId: postDevices
-      responses:
-        201:
-          description: Recurso creado exitosamente
-          content:
-            application/json:
-              schema:
-                  $ref: '#/components/schemas/Device'
-        400:
-          description: Datos incorrectos o mala sintaxis
-          content: {}
-        500:
-          description: Error al crear el recurso
-          content: {}
-    get:
-      tags: [Devices]
-      summary: Obtener dispositivos
-      operationId: getDevices
-      responses:
-        201:
-          description: Recurso obtenido exitosamente
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Device'
-        500:
-          description: Error al obtener el recurso
-          content: {}
-    patch:
-      tags: [Devices]
-      summary: Actualizar dispositivos
-      operationId: patchDevices
-      responses:
-        200:
-          description: Recurso actualizado exitosamente
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Device'
-        500:
-          description: Error al actualizar el recurso
-          content: {}
-    delete:
-      tags: [Devices]
-      summary: Eliminar dispositivos
-      operationId: deleteDevices
-      responses:
-        202:
-          description: Recurso eliminado exitosamente (response sin contenido)
-          content: {}
-        500:
-          description: Error al eliminar el recurso
-          content: {}
-          
-  /devices/{_id}:
-    parameters:
-      - in: path
-        name: _id
-        description: El id del recurso
-        schema: 
-          type: string
-          format: uuid
-          example: 5e1a0651741b255ddda996c4
-        required: true
-    post:
-      tags: [Devices]
-      summary: Crear un dispositivo
-      operationId: postDevice
-      responses:
-        201:
-          description: Recurso creado exitosamente
-          content:
-            application/json:
-              schema:
-                  $ref: '#/components/schemas/Device'
-        400:
-          description: Datos incorrectos o mala sintaxis
-          content: {}
-        500:
-          description: Error al crear el recurso
-          content: {}
-    get:
-      tags: [Devices]
-      summary: Obtener dispositivos
-      operationId: getDevice
-      responses:
-        201:
-          description: Recurso obtenido exitosamente
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Device'
-        500:
-          description: Error al obtener el recurso
-          content: {}
-    patch:
-      tags: [Devices]
-      summary: Actualizar dispositivos
-      operationId: patchDevice
-      responses:
-        200:
-          description: Recurso actualizado exitosamente
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Device'
-        500:
-          description: Error al actualizar el recurso
-          content: {}
-    delete:
-      tags: [Devices]
-      summary: Eliminar dispositivos
-      operationId: deleteDevice
-      responses:
-        202:
-          description: Recurso eliminado exitosamente (response sin contenido)
-          content: {}
-        500:
-          description: Error al eliminar el recurso
-          content: {}
-
-  /devices/{_id}/data:
+  /data:
     parameters:
       - in: path
         name: _id
@@ -559,6 +372,47 @@ paths:
       tags: [Data]
       summary: Obtener datos
       operationId: getData
+      parameters:
+      - name: power
+        in: query
+        schema:
+          type: number
+          format: float
+        description: Potencia media sensada en el dispositivo
+        example: 215.7
+        required: false
+      - name: energy
+        in: query
+        schema:
+          type: number
+          format: unsigned int
+        description: Consumo de energia indicada por medidor externo
+        example: 152
+        required: false
+      - name: dimming
+        in: query
+        schema:
+          type: number
+          format: unsigned int
+        description: Niver de atenuacion de la luz
+        example: 90
+        required: false
+      - name: from
+        in: query
+        schema:
+          type: string
+          format: date-time
+        description: Desde
+        example: '2018-03-20T09:12:28Z'
+        required: false
+      - name: to
+        in: query
+        schema:
+          type: string
+          format: date-time
+        description: Hasta
+        example: '2018-03-20T12:12:28Z'
+        required: false
       responses:
         201:
           description: Recurso obtenido exitosamente
@@ -591,7 +445,122 @@ paths:
       operationId: deleteData
       responses:
         202:
-          description: Recurso eliminado exitosamente (response sin contenido)
+          description: Recurso eliminado exitosamente
+          content: {}
+        500:
+          description: Error al eliminar el recurso
+          content: {}
+          
+  /devices:
+    post:
+      tags: [Devices]
+      summary: Crear un dispositivo
+      operationId: postDevices
+      responses:
+        201:
+          description: Recurso creado exitosamente
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Device'
+        400:
+          description: Datos incorrectos o mala sintaxis
+          content: {}
+        500:
+          description: Error al crear el recurso
+          content: {}
+    get:
+      tags: [Devices]
+      summary: Obtener dispositivos
+      operationId: getDevices
+      parameters:
+      - name: type
+        in: query
+        schema:
+          type: string
+          enum: [LORA]
+        description: Tipo de dispositivo segun su tecnologia de comunicacion
+        example: LORA
+        required: false
+      - name: app_id
+        in: query
+        schema:
+          type: string
+        description: ID unico correspondiente a la aplicacion
+        required: false
+      - name: client_id
+        in: query
+        schema:
+          type: string
+        description: ID unico correspondiente al cliente
+        required: false
+      - name: EUI
+        in: query
+        schema:
+          type: string
+          format: byte
+        description: Device-EUI unico ligado al dispositivo LoRa
+        example: '0080000004001FAB'
+      responses:
+        201:
+          description: Recurso obtenido exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+        500:
+          description: Error al obtener el recurso
+          content: {}
+
+  /devices/{_id}:
+    parameters:
+      - in: path
+        name: _id
+        description: El id del recurso
+        schema: 
+          type: string
+          format: uuid
+          example: 5e1a0651741b255ddda996c4
+        required: true
+    get:
+      tags: [Devices]
+      summary: Obtener dispositivo
+      operationId: getDevice
+      responses:
+        201:
+          description: Recurso obtenido exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+        500:
+          description: Error al obtener el recurso
+          content: {}
+    patch:
+      tags: [Devices]
+      summary: Actualizar dispositivo
+      operationId: patchDevice
+      responses:
+        200:
+          description: Recurso actualizado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        500:
+          description: Error al actualizar el recurso
+          content: {}
+    delete:
+      tags: [Devices]
+      summary: Eliminar dispositivo
+      operationId: deleteDevice
+      responses:
+        202:
+          description: Recurso eliminado exitosamente
           content: {}
         500:
           description: Error al eliminar el recurso
@@ -619,6 +588,20 @@ paths:
       tags: [Zones]
       summary: Obtener zonas
       operationId: getZones
+      parameters:
+      - name: name
+        in: query
+        schema:
+          type: string
+        description: Nombre de la zona
+        example: Zona_1
+        required: false
+      - name: devices
+        in: query
+        schema:
+          type: string
+        description: ID del dispositivo incluido en la zona
+        required: false
       responses:
         201:
           description: Recurso obtenido exitosamente
@@ -631,32 +614,7 @@ paths:
         500:
           description: Error al obtener el recurso
           content: {}
-    patch:
-      tags: [Zones]
-      summary: Actualizar zonas
-      operationId: patchZones
-      responses:
-        200:
-          description: Recurso actualizado exitosamente
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Zone'
-        500:
-          description: Error al actualizar el recurso
-          content: {}
-    delete:
-      tags: [Zones]
-      summary: Eliminar zonas
-      operationId: deleteZones
-      responses:
-        202:
-          description: Recurso eliminado exitosamente (response sin contenido)
-          content: {}
-        500:
-          description: Error al eliminar el recurso
-          content: {}
-  
+
   /zones/{_id}:
     parameters:
       - in: path
@@ -667,26 +625,9 @@ paths:
           format: uuid
           example: 5e1a0651741b255ddda996c4
         required: true
-    post:
-      tags: [Zones]
-      summary: Crear una zona
-      operationId: postZone
-      responses:
-        201:
-          description: Recurso creado exitosamente
-          content:
-            application/json:
-              schema:
-                  $ref: '#/components/schemas/Zone'
-        400:
-          description: Datos incorrectos o mala sintaxis
-          content: {}
-        500:
-          description: Error al crear el recurso
-          content: {}
     get:
       tags: [Zones]
-      summary: Obtener zonas
+      summary: Obtener zona
       operationId: getZone
       responses:
         201:
@@ -702,7 +643,7 @@ paths:
           content: {}
     patch:
       tags: [Zones]
-      summary: Actualizar zonas
+      summary: Actualizar zona
       operationId: patchZone
       responses:
         200:
@@ -716,11 +657,11 @@ paths:
           content: {}
     delete:
       tags: [Zones]
-      summary: Eliminar zonas
+      summary: Eliminar zona
       operationId: deleteZone
       responses:
         202:
-          description: Recurso eliminado exitosamente (response sin contenido)
+          description: Recurso eliminado exitosamente
           content: {}
         500:
           description: Error al eliminar el recurso
@@ -748,6 +689,14 @@ paths:
       tags: [Zone_Groups]
       summary: Obtener grupos de zonas
       operationId: getZone_Groups
+      parameters:
+      - name: name
+        in: query
+        schema:
+          type: string
+        description: Nombre del grupo de zonas
+        example: Grupo A
+        required: false
       responses:
         201:
           description: Recurso obtenido exitosamente
@@ -760,32 +709,7 @@ paths:
         500:
           description: Error al obtener el recurso
           content: {}
-    patch:
-      tags: [Zone_Groups]
-      summary: Actualizar grupos de zonas
-      operationId: patchZone_Groups
-      responses:
-        200:
-          description: Recurso actualizado exitosamente
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Zone_Group'
-        500:
-          description: Error al actualizar el recurso
-          content: {}
-    delete:
-      tags: [Zone_Groups]
-      summary: Eliminar grupos de zonas
-      operationId: deleteZone_Groups
-      responses:
-        202:
-          description: Recurso eliminado exitosamente (response sin contenido)
-          content: {}
-        500:
-          description: Error al eliminar el recurso
-          content: {}
-  
+
   /zone_grups/{_id}:
     parameters:
       - in: path
@@ -796,26 +720,9 @@ paths:
           format: uuid
           example: 5e1a0651741b255ddda996c4
         required: true
-    post:
-      tags: [Zone_Groups]
-      summary: Crear un grupo de zonas
-      operationId: postZone_Group
-      responses:
-        201:
-          description: Recurso creado exitosamente
-          content:
-            application/json:
-              schema:
-                  $ref: '#/components/schemas/Zone_Group'
-        400:
-          description: Datos incorrectos o mala sintaxis
-          content: {}
-        500:
-          description: Error al crear el recurso
-          content: {}
     get:
       tags: [Zone_Groups]
-      summary: Obtener grupos de zonas
+      summary: Obtener grupo de zonas
       operationId: getZone_Group
       responses:
         201:
@@ -831,7 +738,7 @@ paths:
           content: {}
     patch:
       tags: [Zone_Groups]
-      summary: Actualizar grupos de zonas
+      summary: Actualizar grupo de zonas
       operationId: patchZone_Group
       responses:
         200:
@@ -845,11 +752,11 @@ paths:
           content: {}
     delete:
       tags: [Zone_Groups]
-      summary: Eliminar grupos de zonas
+      summary: Eliminar grupo de zonas
       operationId: deleteZone_Group
       responses:
         202:
-          description: Recurso eliminado exitosamente (response sin contenido)
+          description: Recurso eliminado exitosamente
           content: {}
         500:
           description: Error al eliminar el recurso
@@ -858,12 +765,13 @@ paths:
 
 components:
   schemas:
-  
+
     Alert:
       required:
       - dev_id
       - type
-      - timestamp
+      - code
+      - time
       type: object
       properties:
         dev_id:
@@ -874,16 +782,20 @@ components:
           enum: [POWER COMMUNICATION]
           description: Tipo de alerta
           example: POWER
+        code:
+          type: number
+          description: Codigo de alerta
+          example: 101
         viewed:
           type: boolean
           description: Alerta vista
           example: false
-        timestamp:
+        time:
           type: string
           format: date-time
-          description: Timestamp (en segundos) al momento de recibir el dato
-          example: 1996-12-19T16:39:57-08:00
-    
+          description: Tiempo al momento de recibir el dato
+          example: '2018-03-20T09:12:28Z'
+
     App:
       required:
         - app_id
@@ -906,7 +818,7 @@ components:
           type: string
           description: Descripcion breve de la aplicacion
           example: Aplicacion de luminarias publicas controladas por LoRaWAN
-    
+
     Client:
       required:
         - client_id
@@ -927,11 +839,11 @@ components:
             enum: [SmartCell-LoRa]
             description: ID de las aplicaciones a las que esta suscripto el cliente
             example: SmartCell-LoRa
-    
+
     Data:
       required:
       - dev_id
-      - timestamp
+      - time
       type: object
       properties:
         dev_id:
@@ -940,7 +852,7 @@ components:
         power:
           type: number
           format: float
-          description: Consumo de potencia medida en el dispositivo
+          description: Potencia media sensada en el dispositivo
           example: 215.7
         energy:
           type: number
@@ -951,12 +863,13 @@ components:
           type: number
           format: unsigned int
           description: Niver de atenuacion de la luz
-        timestamp:
+          example: 90
+        time:
           type: string
           format: date-time
-          description: Timestamp (en segundos) al momento de recibir el dato
+          description: Tiempo al momento de recibir el dato
           example: 1996-12-19T16:39:57-08:00
-          
+
     Device:
       required:
       - dev_id
@@ -993,17 +906,22 @@ components:
               type: number
               format: float
           example: [-31.534976 -68.540897]
+        created:
+          type: string
+          format: date-time
+          description: Tiempo en el que fue creado el dispositivo
+          example: '2018-03-20T09:12:28Z'
         EUI:
           type: string
           format: byte
           description: Device-EUI unico ligado al dispositivo LoRa
           example: 0080000004001FAB
-          
+
     Zone:
       required:
       - zone_id
       - name
-      - geofence
+      - devices
       type: object
       properties:
         zone_id:
@@ -1013,6 +931,11 @@ components:
           type: string
           description: Nombre de la zona
           example: Zona_1
+        devices:
+          type: array
+          items:
+            type: string
+            description: ID de los dispositivos incluidos en la zona
         geofence:
           type: array
           items:
@@ -1030,7 +953,7 @@ components:
                   format: float
           description: Geofence de la zona (conjunto de ubicaciones [lat,log] que demarcan la zona)
           example: [-31.534976 -68.540897]
-          
+
     Zone_Group:
         required:
         - zone_group_id
@@ -1054,4 +977,3 @@ components:
                     type: string
               description: Arreglo de zonas
               example: [zone_id_1, zone_id_2, zone_id_3]
-              
