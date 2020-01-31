@@ -7,7 +7,7 @@ const ObjectId = Schema.ObjectId;
 
 // Log
 const log = require('../../modules/database-log');
-
+// Esquema del recurso Alert
 const alertSchema = new mongoose.Schema({
     dev_id: { 
         type: ObjectId,
