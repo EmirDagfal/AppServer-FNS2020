@@ -26,7 +26,7 @@ const schemas = {
             min: 0,
             max: 100
         },    // 0-100
-        timestamp: {
+        time: {
             type: Date,
             default: Date.now,
             required: true,

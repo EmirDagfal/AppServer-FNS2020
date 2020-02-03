@@ -18,6 +18,11 @@ const schemas = {
             lat: Number,
             lon: Number
         }],
+        created: {
+            type: Date,
+            default: Date.now(),
+            required: true,
+        },
     })
 };
 

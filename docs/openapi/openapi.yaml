@@ -1083,6 +1083,12 @@ components:
                   format: float
           description: Geofence de la zona (conjunto de ubicaciones [lat,log] que demarcan la zona)
           example: [-31.534976 -68.540897]
+        created:
+          type: string
+          format: date-time
+          description: Tiempo en el que fue creado el dispositivo
+          example: '2018-03-20T09:12:28Z'
+
 
     Zone_Group:
         required:
