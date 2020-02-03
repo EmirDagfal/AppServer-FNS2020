@@ -39,8 +39,6 @@ const alertSchema = new mongoose.Schema({
 
 const alertModel = mongoose.model('Alerts', alertSchema)
 
-const alertProperties = ['dev_id', 'type', 'code', 'viewed', 'time']
-
 const alert = {}
 
 // Creamos una alerta
@@ -99,17 +97,15 @@ alert.read = function(req, res, next){
 
         let alertConsult = {}
         const query = req.query;
-        let from = query.from;
-        let to = query.to;
 
         // Filtro de tiempo desde-hasta from-to
-        if(from || to){
-            if(from && to){
+        if(query.from || query.to){
+            if(query.from && query.to){
                 alertConsult.time = {
                     $gte: new Date(query.from),
                     $lte: new Date(query.to)
                 }
-            }else if(from){
+            }else if(query.from){
                 alertConsult.time = {
                     $gte: new Date(query.from),
                 }
@@ -120,26 +116,18 @@ alert.read = function(req, res, next){
             }
         }
 
-        // if (Object.keys(query).length > 0) {
-        //     for (let param in query) {
-        //         alertConsult[param] = query[param]
-        //     }
-        // }
-
-        console.log(alertConsult)
-
+        // Leemos las propiedades del modelo
+        let props = Object.keys(alertModel.schema.paths)
+        // Filtramos las propiedades que no pertenecen al modelo
         if (Object.keys(query).length > 0) {
             for (let param in query) {
-                for (let property in alertProperties){
+                for (let property in props){
                     if(property == param)   alertConsult[param] = query[param]
                 }
             }
         }
-        
-            
-        console.log('alertConsult')
-        console.log(alertConsult)
 
+        // Busqueda en la base de datos
         alertModel.find(alertConsult, function (err, alerRead) {
             if(err){
                 log.error('Error al leer las alertas')
@@ -192,9 +180,32 @@ alert.delete = function(req, res, next){
         let alertConsult = {}
         const query = req.query;
 
+        // Filtro de tiempo desde-hasta from-to
+        if(query.from || query.to){
+            if(query.from && query.to){
+                alertConsult.time = {
+                    $gte: new Date(query.from),
+                    $lte: new Date(query.to)
+                }
+            }else if(query.from){
+                alertConsult.time = {
+                    $gte: new Date(query.from),
+                }
+            }else{
+                alertConsult.time = {
+                    $lte: new Date(query.to)
+                }
+            }
+        }
+
+        // Leemos las propiedades del modelo
+        let props = Object.keys(alertModel.schema.paths)
+        // Filtramos las propiedades que no pertenecen al modelo
         if (Object.keys(query).length > 0) {
             for (let param in query) {
-                alertConsult[param] = query[param]
+                for (let property in props){
+                    if(property == param)   alertConsult[param] = query[param]
+                }
             }
         }
 
