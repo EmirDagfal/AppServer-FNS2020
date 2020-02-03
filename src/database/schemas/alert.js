@@ -12,7 +12,7 @@ const alertSchema = new mongoose.Schema({
     dev_id: { 
         type: ObjectId,
         ref: 'Devices',
-        required: false,
+        required: false,    // TODO cambiar a true
     },
     type: {
         type: String,
@@ -47,12 +47,6 @@ alert.create = function(req, res, next){
 
     let body = req.body;
     let instance = new alertModel();
-
-    // if ((query).length > 0) {
-    //     for (let param in query) {
-    //         alertConsult[param] = query[param]
-    //     }
-    // }
     
     if(Object.keys(body).length > 0){
         for (let param in body) {
@@ -60,8 +54,6 @@ alert.create = function(req, res, next){
         }
     }
     console.log(instance)
-    // instance.type = body.type;
-    // instance.viewed = body.viewed;
 
     instance.save((err, alertStored) => {
         if(err){

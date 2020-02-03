@@ -6,18 +6,30 @@ const schemas = {
     dataSchema: new Schema({
         dev_id: {
             type: Schema.Types.ObjectId, 
-            ref: 'Device'
+            ref: 'Device',
+            required: true,
         },
         // TODO:
         // Posibles funciones a implementar:
         // -    get: v => Math.round(v),
         // -    set: v => Math.round(v),
-        power: {type: Number, min: 0},  // float >= 0
-        energy: {type: Number, min: 0}, // float >= 0
-        dimming: {type: Number, min: 0, max: 100},    // 0-100
+        power: {
+            type: Number,
+            min: 0
+        },  // float >= 0
+        energy: {
+            type: Number,
+            min: 0
+        }, // float >= 0
+        dimming: {
+            type: Number,
+            min: 0,
+            max: 100
+        },    // 0-100
         timestamp: {
             type: Date,
-            default: Date.now
+            default: Date.now,
+            required: true,
         },
     })
 };

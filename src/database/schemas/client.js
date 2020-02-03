@@ -5,7 +5,11 @@ const Schema = require('mongoose').Schema;
 const schemas = {
     clientSchema: new Schema({
         _id: Schema.Types.ObjectId,
-        name: {type: String, unique: true},   // unico
+        name: {
+            type: String,
+            unique: true,
+            required: true,
+        },
         apps: [{
             type: mongoose.Schema.Types.ObjectId, 
             ref: 'App'

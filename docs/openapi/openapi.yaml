@@ -1052,7 +1052,6 @@ components:
       required:
       - zone_id
       - name
-      - devices
       type: object
       properties:
         zone_id:
