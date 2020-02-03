@@ -12,17 +12,34 @@ const alertSchema = new mongoose.Schema({
     dev_id: { 
         type: ObjectId,
         ref: 'Devices',
+        required: false,
+    },
+    type: {
+        type: String,
+        uppercase: true,
+        enum: ['POWER', 'COMMUNICATION'],
+        default: 'POWER',
         required: true,
     },
-    type: {type: String, uppercase: true, enum: ['POWER', 'COMMUNICATION'], default: 'POWER'},
-    viewed: {type: Boolean, default: false},
-    timestamp: {
+    code: {
+        type: String,
+        required: true,
+        default: "001"
+    },
+    viewed: {
+        type: Boolean,
+        default: false
+    },
+    time: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        required: true,
     },
 })
 
 const alertModel = mongoose.model('Alerts', alertSchema)
+
+const alertProperties = ['dev_id', 'type', 'code', 'viewed', 'time']
 
 const alert = {}
 
@@ -32,8 +49,21 @@ alert.create = function(req, res, next){
 
     let body = req.body;
     let instance = new alertModel();
-    instance.type = body.type;
-    instance.viewed = body.viewed;
+
+    // if ((query).length > 0) {
+    //     for (let param in query) {
+    //         alertConsult[param] = query[param]
+    //     }
+    // }
+    
+    if(Object.keys(body).length > 0){
+        for (let param in body) {
+            instance[param] = body[param]
+        }
+    }
+    console.log(instance)
+    // instance.type = body.type;
+    // instance.viewed = body.viewed;
 
     instance.save((err, alertStored) => {
         if(err){
@@ -41,6 +71,7 @@ alert.create = function(req, res, next){
             res.status(500).send(err)
         }else{
             log.info('Alerta creada exitosamente')
+            console.log(alertStored)
             res.status(201).send(alertStored)
         }
     })
@@ -51,6 +82,7 @@ alert.read = function(req, res, next){
 
     let _id = req.params._id
     if(_id){
+        // Lectura de alerta por id
         log.info(`Leyendo alerta ${_id}`)
         alertModel.findById(_id, function (err, alerRead) {
             if(err){
@@ -62,21 +94,51 @@ alert.read = function(req, res, next){
             }
         })
     }else{
-
+        // Lectura general de alertas
         log.info('Leyendo alertas')
 
         let alertConsult = {}
         const query = req.query;
-        let dev_id = req.params.dev_id
-        if(dev_id){
-            alertConsult.dev_id = dev_id;
+        let from = query.from;
+        let to = query.to;
+
+        // Filtro de tiempo desde-hasta from-to
+        if(from || to){
+            if(from && to){
+                alertConsult.time = {
+                    $gte: new Date(query.from),
+                    $lte: new Date(query.to)
+                }
+            }else if(from){
+                alertConsult.time = {
+                    $gte: new Date(query.from),
+                }
+            }else{
+                alertConsult.time = {
+                    $lte: new Date(query.to)
+                }
+            }
         }
+
+        // if (Object.keys(query).length > 0) {
+        //     for (let param in query) {
+        //         alertConsult[param] = query[param]
+        //     }
+        // }
+
+        console.log(alertConsult)
 
         if (Object.keys(query).length > 0) {
             for (let param in query) {
-                alertConsult[param] = query[param]
+                for (let property in alertProperties){
+                    if(property == param)   alertConsult[param] = query[param]
+                }
             }
         }
+        
+            
+        console.log('alertConsult')
+        console.log(alertConsult)
 
         alertModel.find(alertConsult, function (err, alerRead) {
             if(err){
@@ -124,7 +186,27 @@ alert.delete = function(req, res, next){
             }
         })
     }else{
-        log.error(`Error: ID ${_id} incorrecto`)
+        // Eliminacion general de alertas
+        log.info('Eliminando alertas')
+
+        let alertConsult = {}
+        const query = req.query;
+
+        if (Object.keys(query).length > 0) {
+            for (let param in query) {
+                alertConsult[param] = query[param]
+            }
+        }
+
+        alertModel.deleteMany(alertConsult, function (err, alerRead) {
+            if(err){
+                log.error('Error al eliminar las alertas')
+                res.status(500).send(err)
+            }else{
+                log.info('Alertas eliminadas exitosamente')
+                res.status(200).send(alerRead)
+            }
+        })
     }
 }
 
