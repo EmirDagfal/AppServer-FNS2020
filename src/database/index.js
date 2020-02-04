@@ -92,7 +92,7 @@ class db {
                     }
                 }
             }
-
+            
             // Leemos las propiedades del modelo
             let props = Object.keys(this.Model.schema.paths)
             // Filtramos las propiedades que no pertenecen al modelo
@@ -103,7 +103,7 @@ class db {
                     }
                 }
             }
-
+            
             // Busqueda en la base de datos
             this.Model.find(resourceConsult, function (err, resourceRead) {
                 if(err){
@@ -186,7 +186,7 @@ class db {
                     }
                 }
             }
-
+            
             // Leemos las propiedades del modelo
             let props = Object.keys(this.Model.schema.paths)
             // Filtramos las propiedades que no pertenecen al modelo
