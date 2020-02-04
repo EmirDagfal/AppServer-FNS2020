@@ -1,15 +1,12 @@
 'use strict'
 
-// Importamos el submódulo Router
-const { Router } = require('express')
-
 // Instanciamos un router
-const router = Router()
+const router = require('express').Router()
 
 // Importamos los controladores
 const controller = require('../controllers/alerts')
 
-// Rutas de alertas en general
+// Rutas de recursos en general
 router.options('/', (req, res, next) => {
     res.header('Allow', 'POST, GET').send();
 })
@@ -18,7 +15,7 @@ router.get('/', controller.get)
 router.patch('/', controller.patch)
 router.delete('/', controller.delete)
 
-// Rutas de alertas especificas
+// Rutas de recurso especificos
 router.options('/:_id', (req, res, next) => {
     res.header('Allow', 'POST, GET, PATCH, DELETE').send();
 })

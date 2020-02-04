@@ -1,28 +1,27 @@
 'use strict'
 
-// Importamos el submódulo Router
-const { Router } = require('express')
-
 // Instanciamos un router
-const router = Router()
+const router = require('express').Router()
 
-// Acciones permitidas sobre la ruta
+// Importamos los controladores
+const controller = require('../controllers/zones')
+
+// Rutas de recursos en general
 router.options('/', (req, res, next) => {
-    res.header('Allow', 'PUSH, GET, PATCH, DELETE').send();
+    res.header('Allow', 'POST, GET').send();
 })
+router.post('/', controller.post)
+router.get('/', controller.get)
+router.patch('/', controller.patch)
+router.delete('/', controller.delete)
 
-// Ruta para obtener una lista de las zonas
-router.get('/', function (req, res, next) {
-    res.send({
-        links:  [
-            {rel: 'Dispositivos', href: '/zones/:zone_id'}
-        ]
-    })
+// Rutas de recurso especificos
+router.options('/:_id', (req, res, next) => {
+    res.header('Allow', 'POST, GET, PATCH, DELETE').send();
 })
-
-// Ruta para obtener informacion de una zona especifica
-router.get('/', function (req, res, next) {
-
-})
+router.post('/:_id', controller.post)
+router.get('/:_id', controller.get)
+router.patch('/:_id', controller.patch)
+router.delete('/:_id', controller.delete)
 
 module.exports = router;
