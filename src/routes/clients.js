@@ -17,7 +17,7 @@ router.delete('/', controller.delete)
 
 // Rutas de recurso especificos
 router.options('/:_id', (req, res, next) => {
-    res.header('Allow', 'POST, GET, PATCH, DELETE').send();
+    res.header('Allow', 'GET, PATCH, DELETE').send();
 })
 router.post('/:_id', controller.post)
 router.get('/:_id', controller.get)
