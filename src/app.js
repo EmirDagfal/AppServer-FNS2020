@@ -45,6 +45,8 @@ const appsRoute = require('./routes/apps')
 app.use('/apps', appsRoute);
 const clientsRoute = require('./routes/clients')
 app.use('/clients', clientsRoute);
+const dataRoute = require('./routes/data')
+app.use('/data', dataRoute);
 const devicesRoute = require('./routes/devices')
 app.use('/devices', devicesRoute);
 const zonesRoute = require('./routes/zones')
