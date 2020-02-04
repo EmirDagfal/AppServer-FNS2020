@@ -1,20 +1,25 @@
 'use strict'
 
-const Schema = require('mongoose').Schema;
+// Mongoose
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const ObjectId = Schema.ObjectId;
 
-const schemas = {
-    clientSchema: new Schema({
-        _id: Schema.Types.ObjectId,
-        name: {
-            type: String,
-            unique: true,
-            required: true,
-        },
-        apps: [{
-            type: Schema.Types.ObjectId, 
-            ref: 'App'
-        }],
-    })
-};
+// Definimos el esquema
+const resourceSchema = new mongoose.Schema({
+    _id: Schema.Types.ObjectId,
+    name: {
+        type: String,
+        unique: true,
+        required: true,
+    },
+    apps: [{
+        type: Schema.Types.ObjectId, 
+        ref: 'App'
+    }],
+})
 
-module.exports = schemas;
+// Definimos el modelo
+const resourceModel = mongoose.model('Clients', resourceSchema)
+
+module.exports = resourceModel;

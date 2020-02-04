@@ -1,29 +1,34 @@
 'use strict'
 
-const Schema = require('mongoose').Schema;
+// Mongoose
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const ObjectId = Schema.ObjectId;
 
-const schemas = {
-    zoneSchema: new Schema({
-        _id: Schema.Types.ObjectId,
-        name: {
-            type: String,
-            unique: true,
-            required: true,
-        },
-        devices: [{
-            type: Schema.Types.ObjectId,
-            ref: 'Device'
-        }],
-        geofence: [{ 
-            lat: Number,
-            lon: Number
-        }],
-        created: {
-            type: Date,
-            default: Date.now(),
-            required: true,
-        },
-    })
-};
+// Definimos el esquema
+const resourceSchema = new mongoose.Schema({
+    _id: ObjectId,
+    name: {
+        type: String,
+        unique: true,
+        required: true,
+    },
+    devices: [{
+        type: ObjectId,
+        ref: 'Device'
+    }],
+    geofence: [{ 
+        lat: Number,
+        lon: Number
+    }],
+    created: {
+        type: Date,
+        default: Date.now(),
+        required: true,
+    },
+})
 
-module.exports = schemas;
+// Definimos el modelo
+const resourceModel = mongoose.model('Zones', resourceSchema)
+
+module.exports = resourceModel;
