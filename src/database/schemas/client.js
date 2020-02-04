@@ -11,7 +11,7 @@ const schemas = {
             required: true,
         },
         apps: [{
-            type: mongoose.Schema.Types.ObjectId, 
+            type: Schema.Types.ObjectId, 
             ref: 'App'
         }],
     })
