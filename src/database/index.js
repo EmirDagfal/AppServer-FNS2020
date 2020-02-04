@@ -6,13 +6,21 @@ const mongoose = require('mongoose');
 const log = require('../modules/database-log');
 
 class db {
-
-    // Constructor
+    /**
+     * Constructor
+     * @param {Mongoose.Model} Model Es el modelo del recurso del la base de datos
+     */
     constructor(Model){
         this.Model = Model;
     }
 
-    // Creamos un recurso
+    /**
+     * Create
+     * Este metodo sirve para crear un recurso
+     * @param {Object} req Request Express
+     * @param {Object} res Response Express
+     * @param {Object} next Next Middleware Express
+     */
     create = function(req, res, next){
         log.info('Creando recurso')
 
@@ -38,7 +46,13 @@ class db {
         })
     }
 
-    // Leemos recurso/s
+    /**
+     * Read
+     * Este metodo sirve para leer un recurso o varios
+     * @param {Object} req Request Express
+     * @param {Object} res Response Express
+     * @param {Object} next Next Middleware Express
+     */
     read (req, res, next){
 
         let _id = req.params._id
@@ -103,7 +117,13 @@ class db {
         }
     }
 
-    // Actualizo un recurso
+    /**
+     * Update
+     * Este metodo sirve para actualizar los valores de un recurso
+     * @param {Object} req Request Express
+     * @param {Object} res Response Express
+     * @param {Object} next Next Middleware Express
+     */
     update = function(req, res, next){
         let body = req.body;
         
@@ -123,7 +143,13 @@ class db {
         }
     }
 
-    // Elimino un recurso
+    /**
+     * Delete
+     * Este metodo sirve para eliminar un recurso o varios
+     * @param {Object} req Request Express
+     * @param {Object} res Response Express
+     * @param {Object} next Next Middleware Express
+     */
     delete = function(req, res, next){
         let _id = req.params._id
         if(_id){
