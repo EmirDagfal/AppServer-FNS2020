@@ -6,9 +6,9 @@ const controller = {}
 const log = require('../modules/controllers-log');
 // Modelo
 // const mongoose = require('mongoose')
-const alert = require('../database/schemas/alert')
-// const Alert = require('../database').Alert;
-
+const db = require('../database')
+const Model = require('../database/schemas/alert')
+const alert = new db(Model);
 // POST
 controller.post = function (req, res, next)
 {
