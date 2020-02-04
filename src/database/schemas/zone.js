@@ -7,7 +7,12 @@ const ObjectId = Schema.ObjectId;
 
 // Definimos el esquema
 const resourceSchema = new mongoose.Schema({
-    _id: ObjectId,
+    _id: {
+        type: ObjectId,
+        index: true,
+        required: true,
+        auto: true,
+    },
     name: {
         type: String,
         unique: true,
