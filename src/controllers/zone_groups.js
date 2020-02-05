@@ -6,7 +6,7 @@ const log = require('../modules/controllers-log');
 // Controlador de la base de datos
 const db = require('../database')
 // Modelo
-const Model = require('../database/schemas/zone_grup')
+const Model = require('../database/models/zone_grup')
 const database = new db(Model);
 
 // Creamos controlador

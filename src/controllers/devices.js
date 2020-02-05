@@ -6,7 +6,7 @@ const log = require('../modules/controllers-log');
 // Controlador de la base de datos
 const db = require('../database')
 // Modelo
-const Model = require('../database/schemas/device')
+const Model = require('../database/models/device')
 const database = new db(Model);
 
 // Creamos controlador
