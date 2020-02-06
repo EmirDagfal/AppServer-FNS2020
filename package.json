@@ -2,7 +2,7 @@
   "name": "appserver-fns2020",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "directories": {
     "doc": "docs"
   },
