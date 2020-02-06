@@ -17,3 +17,7 @@ Links:
 - [SchemaTypes](https://mongoosejs.com/docs/schematypes.html)
 Dependencias:
 - **mongoose**
+
+### Desplegar API
+Links:
+- [Como desplegar tu app NodeJ.js en Producción con Heroku](https://www.youtube.com/watch?v=mkn5n8Ws-HE)
