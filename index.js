@@ -14,7 +14,7 @@ require('dotenv').config();
 
 // Conexion de la base de datos
 const mongoose = require('mongoose');
-let db_uri = `${ process.env.MONGODB_URI || 'mongodb://localhost:27017' }/${ process.env.DB_NAME || 'luminarias' }`
+let db_uri = `${ process.env.MONGODB_URI}` || 'mongodb://localhost:27017/luminarias';
 console.log("Conectando a " + db_uri)
 
 mongoose.connect(db_uri, function (err) {
@@ -27,7 +27,7 @@ mongoose.connect(db_uri, function (err) {
     }
 
     // Conexion exitosa
-    console.log(chalk.black.bgGreen(`Base de datos ${ process.env.DB_NAME || 'luminarias' } escuchando en ${ process.env.MONGODB_URI || 'mongodb://localhost:27017' }/${ process.env.DB_NAME || 'luminarias' }`));
+    console.log(chalk.black.bgGreen(`Base de datos ${ db_uri || 'mongodb://localhost:27017/luminarias' }`));
 
     // Creamos un nuevo servidor con nuestra app
     const server = http.createServer(app)
