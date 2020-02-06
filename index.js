@@ -33,11 +33,11 @@ mongoose.connect(db_uri, function (err) {
     const server = http.createServer(app)
 
     server.on('listening', function() {
-        console.info(chalk.black.bgBlue(`Servidor escuchando en ${process.env.SERVER_URL || 'http://localhost'}` + ':' + `${process.env.SERVER_PORT || '3000'}`))
+        console.info(chalk.black.bgBlue(`Servidor escuchando en ${process.env.SERVER_URL || 'http://localhost'}` + ':' + `${process.env.PORT || '3000'}`))
     })
 
-    // Ponemos a escuchar nuestro servidor en el SERVER_PORT
-    server.listen( process.env.SERVER_PORT || '3000' );
+    // Ponemos a escuchar nuestro servidor en el PORT
+    server.listen( process.env.PORT || '3000' );
 });
 
 
