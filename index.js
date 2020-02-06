@@ -14,12 +14,15 @@ require('dotenv').config();
 
 // Conexion de la base de datos
 const mongoose = require('mongoose');
+let db_uri = `${ process.env.MONGODB_URI || 'mongodb://localhost:27017' }/${ process.env.DB_NAME || 'luminarias' }`
+console.log("Conectando a " + db_uri)
 
-mongoose.connect(`${ process.env.MONGODB_URI || 'mongodb://localhost:27017' }/${ process.env.DB_NAME || 'luminarias' }`, function (err) {
+mongoose.connect(db_uri, function (err) {
 
     // Error de conexion con base de datos
     if (err){
         console.log(chalk.black.bgRed("Error al conectar con la base de datos"))
+        console.log(err)
         throw err;
     }
 
