@@ -22,8 +22,9 @@ const resourceSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId, 
         ref: 'App'
     }],
+}, {
+    timestamps: true
 })
-
 // Definimos el modelo
 const resourceModel = mongoose.model('Clients', resourceSchema)
 

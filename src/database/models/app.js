@@ -26,6 +26,8 @@ const resourceSchema = new mongoose.Schema({
         type: String,
         maxlength: 140
     } // maximo 140 caracteres
+}, {
+    timestamps: true
 })
 
 // Definimos el modelo

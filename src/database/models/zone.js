@@ -25,14 +25,10 @@ const resourceSchema = new mongoose.Schema({
     geofence: [{ 
         lat: Number,
         lon: Number
-    }],
-    created: {
-        type: Date,
-        default: Date.now(),
-        required: true,
-    },
+    }]
+}, {
+    timestamps: true
 })
-
 // Definimos el modelo
 const resourceModel = mongoose.model('Zones', resourceSchema)
 

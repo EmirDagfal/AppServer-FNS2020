@@ -42,8 +42,9 @@ const resourceSchema = new mongoose.Schema({
         type: String,
         maxlength: 64
     } // 64 bytes
+}, {
+    timestamps: true
 })
-
 // Definimos el modelo
 const resourceModel = mongoose.model('Devices', resourceSchema)
 

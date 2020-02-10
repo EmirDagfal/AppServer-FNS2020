@@ -23,8 +23,9 @@ const resourceSchema = new mongoose.Schema({
         ref: 'Zone',
         required: true,
     }],
+}, {
+    timestamps: true
 })
-
 // Definimos el modelo
 const resourceModel = mongoose.model('Zone_Groups', resourceSchema)
 
