@@ -5,10 +5,13 @@ info:
   description: "API destinada al control del sistema de Telegestion para la demo de la Fiesta Nacional del Sol 2020"
   contact:
     email: emirdagfal@gmail.com
-  version: 1.0.0
+  version: 1.0.1
 
 servers:
 - url: localhost:3000
+  description: Servidor local
+- url: https://mongodb-api-fns2020.herokuapp.com/
+  description: Servidor heroku
 
 paths:
 
@@ -929,12 +932,11 @@ components:
 
     App:
       required:
-        - app_id
         - name
         - version
       type: object
       properties:
-        app_id:
+        _id:
           type: string
           description: ID unico correspondiente a la aplicacion
         name:
@@ -949,14 +951,23 @@ components:
           type: string
           description: Descripcion breve de la aplicacion
           example: Aplicacion de luminarias publicas controladas por LoRaWAN
+        createdAt:
+          type: string
+          format: date-time
+          description: Tiempo en el que fue creado
+          example: '2018-03-20T09:12:28Z'
+        updatedAt:
+          type: string
+          format: date-time
+          description: Tiempo en el que fue actualizado
+          example: '2018-03-20T09:12:28Z'
 
     Client:
       required:
-        - client_id
         - name
       type: object
       properties:
-        client_id:
+        _id:
           type: string
           description: ID unico correspondiente al cliente
         name:
@@ -970,6 +981,16 @@ components:
             enum: [SmartCell-LoRa]
             description: ID de las aplicaciones a las que esta suscripto el cliente
             example: SmartCell-LoRa
+        createdAt:
+          type: string
+          format: date-time
+          description: Tiempo en el que fue creado
+          example: '2018-03-20T09:12:28Z'
+        updatedAt:
+          type: string
+          format: date-time
+          description: Tiempo en el que fue actualizado
+          example: '2018-03-20T09:12:28Z'
 
     Data:
       required:
@@ -1003,13 +1024,12 @@ components:
 
     Device:
       required:
-      - dev_id
       - app_id
       - client_id
       - type
       type: object
       properties:
-        dev_id:
+        _id:
           type: string
           description: ID unico correspondiente al dispositivo
         type:
@@ -1037,24 +1057,28 @@ components:
               type: number
               format: float
           example: [-31.534976 -68.540897]
-        created:
-          type: string
-          format: date-time
-          description: Tiempo en el que fue creado el dispositivo
-          example: '2018-03-20T09:12:28Z'
         EUI:
           type: string
           format: byte
           description: Device-EUI unico ligado al dispositivo LoRa
           example: 0080000004001FAB
+        createdAt:
+          type: string
+          format: date-time
+          description: Tiempo en el que fue creado
+          example: '2018-03-20T09:12:28Z'
+        updatedAt:
+          type: string
+          format: date-time
+          description: Tiempo en el que fue actualizado
+          example: '2018-03-20T09:12:28Z'
 
     Zone:
       required:
-      - zone_id
       - name
       type: object
       properties:
-        zone_id:
+        _id:
           type: string
           description: ID unico correspondiente a la zona
         name:
@@ -1083,21 +1107,25 @@ components:
                   format: float
           description: Geofence de la zona (conjunto de ubicaciones [lat,log] que demarcan la zona)
           example: [-31.534976 -68.540897]
-        created:
+        createdAt:
           type: string
           format: date-time
-          description: Tiempo en el que fue creado el dispositivo
+          description: Tiempo en el que fue creado
+          example: '2018-03-20T09:12:28Z'
+        updatedAt:
+          type: string
+          format: date-time
+          description: Tiempo en el que fue actualizado
           example: '2018-03-20T09:12:28Z'
 
 
     Zone_Group:
         required:
-        - zone_group_id
         - name
         - zones
         type: object
         properties:
-          zone_group_id:
+          _id:
             type: string
             description: ID unico correspondiente al grupo de zonas
           name:
@@ -1113,3 +1141,13 @@ components:
                     type: string
               description: Arreglo de zonas
               example: [zone_id_1, zone_id_2, zone_id_3]
+          createdAt:
+            type: string
+            format: date-time
+            description: Tiempo en el que fue creado
+            example: '2018-03-20T09:12:28Z'
+          updatedAt:
+            type: string
+            format: date-time
+            description: Tiempo en el que fue actualizado
+            example: '2018-03-20T09:12:28Z'
