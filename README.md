@@ -1,7 +1,7 @@
 # AppServer-FNS2020
 
 ## Diagrama de rutas
-![Diagrama](docs/diagrams/API-FNS2020.png)
+![Diagrama](docs/diagrams/Routes-Diagram.png)
 
 ## Base de datos
-![Diagrama](docs/diagrams/DB-FNS2020.png)
+![Diagrama](docs/diagrams/DB-Diagram.png)

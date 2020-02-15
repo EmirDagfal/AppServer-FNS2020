@@ -21,9 +21,9 @@ app.use(bodyParser.json())
 
 app.get('/', (req, res, next) => {
     res.send({
-        nombre: 'API Luminarias',
-        descripcion: 'API de Telegestion de Luminarias de Alumbrado Publico en el contexto de la Fiesta Nacional del Sol 2020',
-        version: '1.0.0',
+        nombre: 'API Database Luminarias',
+        descripcion: 'API de gestion de Base de Datos de Luminarias de Alumbrado Publico',
+        version: '1.0.1',
         links:  [
             {rel: 'Documentacion', href: '/docs'},
             {rel: 'Alertas', href: '/alerts'},
