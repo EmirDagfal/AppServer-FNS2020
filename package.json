@@ -1,5 +1,5 @@
 {
-  "name": "appserver-fns2020",
+  "name": "api-luminariesdb",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EmirDagfal/AppServer-FNS2020.git"
+    "url": "git+https://github.com/EmirDagfal/API-LuminariesDB.git"
   },
   "author": "Emir Dagfal",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/EmirDagfal/AppServer-FNS2020/issues"
+    "url": "https://github.com/EmirDagfal/API-LuminariesDB/issues"
   },
-  "homepage": "https://github.com/EmirDagfal/AppServer-FNS2020#readme",
+  "homepage": "https://github.com/EmirDagfal/API-LuminariesDB#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "chalk": "^3.0.0",
