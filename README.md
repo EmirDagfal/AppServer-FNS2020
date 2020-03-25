@@ -1,4 +1,4 @@
-# API Luminaries MongoDB
+# API Database-Manager
 Api de gestion de base de datos no relacional con MongoDB
 
 ## Diagrama de rutas
