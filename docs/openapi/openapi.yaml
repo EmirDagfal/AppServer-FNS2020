@@ -1,11 +1,11 @@
 openapi: 3.0.0
 
 info:
-  title: API FNS 2020
-  description: "API destinada al control del sistema de Telegestion para la demo de la Fiesta Nacional del Sol 2020"
+  description: "API Gestion de Base de Datos MongoDB"
+  version: 1.0.0
+  title: Database Manager
   contact:
-    email: emirdagfal@gmail.com
-  version: 1.0.1
+    email: emirdagfal@promatix.com.ar
 
 servers:
 - url: localhost:3000
@@ -13,8 +13,8 @@ servers:
 - url: https://mongodb-api-fns2020.herokuapp.com/
   description: Servidor heroku
 
-paths:
 
+paths:
   /alerts:
     post:
       tags: [Alerts]
@@ -1034,7 +1034,7 @@ components:
           description: ID unico correspondiente al dispositivo
         type:
           type: string
-          enum: [LORA]
+          format: Upper case
           description: Tipo de dispositivo segun su tecnologia de comunicacion
           example: LORA
         app_id:
