@@ -21,7 +21,7 @@ class db {
      * @param {Object} res Response Express
      * @param {Object} next Next Middleware Express
      */
-    create = function(req, res, next){
+    create (req, res, next){
         log.info('Creando recurso')
 
         let body = req.body;
@@ -99,7 +99,7 @@ class db {
             if (Object.keys(query).length > 0) {
                 for (let param in query) {
                     for (let property in props){
-                        if(property == param)   resourceConsult[param] = query[param]
+                        if(props[property] == param)   resourceConsult[param] = query[param]
                     }
                 }
             }
@@ -124,7 +124,7 @@ class db {
      * @param {Object} res Response Express
      * @param {Object} next Next Middleware Express
      */
-    update = function(req, res, next){
+    update (req, res, next){
         let body = req.body;
         
         let _id = req.params._id
@@ -150,7 +150,7 @@ class db {
      * @param {Object} res Response Express
      * @param {Object} next Next Middleware Express
      */
-    delete = function(req, res, next){
+    delete (req, res, next){
         let _id = req.params._id
         if(_id){
             this.Model.findByIdAndDelete(_id, function (err, resourceDeleted) {
