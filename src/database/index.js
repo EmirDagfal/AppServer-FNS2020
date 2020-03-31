@@ -193,7 +193,7 @@ class db {
             if (Object.keys(query).length > 0) {
                 for (let param in query) {
                     for (let property in props){
-                        if(property == param)   alertConsult[param] = query[param]
+                        if(props[property] == param)   alertConsult[param] = query[param]
                     }
                 }
             }
