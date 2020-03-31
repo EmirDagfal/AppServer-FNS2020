@@ -16,9 +16,8 @@ const resourceSchema = new mongoose.Schema({
     type: {
         type: String,
         uppercase: true,
-        enum: ['LORA'],
         required: true,
-    },    // TODO agregar otros tipos de apps [LORA ZB WIFI]
+    },
     client_id: { 
         type: Schema.Types.ObjectId, 
         ref: 'Client',
