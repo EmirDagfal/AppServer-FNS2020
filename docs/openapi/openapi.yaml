@@ -8,7 +8,7 @@ info:
     email: emirdagfal@promatix.com.ar
 
 servers:
-- url: localhost:3000
+- url: http://localhost:3000
   description: Servidor local
 - url: https://mongodb-api-fns2020.herokuapp.com/
   description: Servidor heroku
