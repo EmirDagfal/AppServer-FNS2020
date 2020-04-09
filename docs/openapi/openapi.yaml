@@ -28,62 +28,30 @@ paths:
               schema:
                   $ref: '#/components/schemas/Alert'
         400:
-          description: Datos incorrectos o mala sintaxis
-          content: {}
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al crear el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     get:
       tags: [Alerts]
       summary: Obtener alertas
       operationId: getAlerts
       parameters:
-      - name: dev_id
-        in: query
-        schema:
-          type: string
-        description: ID ligado al dispositivo
-        required: false
-      - name: type
-        in: query
-        schema:
-          type: string
-          enum: [POWER COMMUNICATION]
-        description: Tipo de alerta
-        example: POWER
-        required: false
-      - name: code
-        in: query
-        schema:
-          type: number
-        description: Codigo de alerta
-        example: 101
-        required: false
-      - name: viewed
-        in: query
-        schema:
-          type: boolean
-        description: Alerta vista
-        example: false
-        required: false
-      - name: from
-        in: query
-        schema:
-          type: string
-          format: date-time
-        description: Desde
-        example: '2018-03-20T09:12:28Z'
-        required: false
-      - name: to
-        in: query
-        schema:
-          type: string
-          format: date-time
-        description: Hasta
-        example: '2018-03-20T12:12:28Z'
-        required: false
+      - $ref: '#/components/parameters/Alert ID'
+      - $ref: '#/components/parameters/Device ID'
+      - $ref: '#/components/parameters/Alert Type'
+      - $ref: '#/components/parameters/Alert Code'
+      - $ref: '#/components/parameters/Alert Check'
+      - $ref: '#/components/parameters/Quantity'
+      - $ref: '#/components/parameters/From'
+      - $ref: '#/components/parameters/To'
       responses:
-        201:
+        200:
           description: Recurso obtenido exitosamente
           content:
             application/json:
@@ -91,82 +59,53 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Alert'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al obtener el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     delete:
       tags: [Alerts]
       summary: Eliminar alertas
       operationId: deleteAlerts
       parameters:
-      - name: dev_id
-        in: query
-        schema:
-          type: string
-        description: ID ligado al dispositivo
-        required: false
-      - name: type
-        in: query
-        schema:
-          type: string
-          enum: [POWER COMMUNICATION]
-        description: Tipo de alerta
-        example: POWER
-        required: false
-      - name: code
-        in: query
-        schema:
-          type: number
-        description: Codigo de alerta
-        example: 101
-        required: false
-      - name: viewed
-        in: query
-        schema:
-          type: boolean
-        description: Alerta vista
-        example: false
-        required: false
-      - name: from
-        in: query
-        schema:
-          type: string
-          format: date-time
-        description: Desde
-        example: '2018-03-20T09:12:28Z'
-        required: false
-      - name: to
-        in: query
-        schema:
-          type: string
-          format: date-time
-        description: Hasta
-        example: '2018-03-20T12:12:28Z'
-        required: false
+      - $ref: '#/components/parameters/Alert ID'
+      - $ref: '#/components/parameters/Device ID'
+      - $ref: '#/components/parameters/Alert Type'
+      - $ref: '#/components/parameters/Alert Code'
+      - $ref: '#/components/parameters/Alert Check'
+      - $ref: '#/components/parameters/Quantity'
+      - $ref: '#/components/parameters/From'
+      - $ref: '#/components/parameters/To'
       responses:
-        202:
+        204:
           description: Recurso eliminado exitosamente
           content: {}
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al eliminar el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
 
   /alerts/{_id}:
     parameters:
-      - in: path
-        name: _id
-        description: El id del recurso
-        schema: 
-          type: string
-          format: uuid
-          example: 5e1a0651741b255ddda996c4
-        required: true
+      - $ref: '#/components/parameters/ID Path'
     get:
       tags: [Alerts]
       summary: Obtener alerta
       operationId: getAlert
       responses:
-        201:
+        200:
           description: Recurso obtenido exitosamente
           content:
             application/json:
@@ -174,9 +113,16 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Alert'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al obtener el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     patch:
       tags: [Alerts]
       summary: Actualizar alerta
@@ -188,20 +134,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Alert'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al actualizar el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     delete:
       tags: [Alerts]
       summary: Eliminar alerta
       operationId: deleteAlert
       responses:
-        202:
+        204:
           description: Recurso eliminado exitosamente
           content: {}
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al eliminar el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
 
   /apps:
     post:
@@ -216,33 +176,31 @@ paths:
               schema:
                   $ref: '#/components/schemas/App'
         400:
-          description: Datos incorrectos o mala sintaxis
-          content: {}
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al crear el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     get:
       tags: [Apps]
       summary: Obtener aplicaciónes
       operationId: getApps
       parameters:
-      - name: name
-        in: query
-        schema:
-          type: string
-          enum: [SmartCell-LoRa]
-        description: Nombre de la aplicacion
-        example: SmartCell-LoRa
-        required: false
-      - name: version
-        in: query
-        schema:
-          type: string
-        description: Version de la aplicacion
-        example: '1.0.1'
-        required: false
+        - $ref: '#/components/parameters/App ID'
+        - $ref: '#/components/parameters/Client ID'
+        - $ref: '#/components/parameters/App Type'
+        - $ref: '#/components/parameters/App Tecnology'
+        - $ref: '#/components/parameters/App Hardware'
+        - $ref: '#/components/parameters/App Version'
+        - $ref: '#/components/parameters/Quantity'
+        - $ref: '#/components/parameters/From'
+        - $ref: '#/components/parameters/To'
       responses:
-        201:
+        200:
           description: Recurso obtenido exitosamente
           content:
             application/json:
@@ -250,26 +208,26 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/App'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al obtener el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
 
   /apps/{_id}:
     parameters:
-      - in: path
-        name: _id
-        description: El id del recurso
-        schema: 
-          type: string
-          format: uuid
-          example: 5e1a0651741b255ddda996c4
-        required: true
+      - $ref: '#/components/parameters/ID Path'
     get:
       tags: [Apps]
       summary: Obtener aplicación
       operationId: getApp
       responses:
-        201:
+        200:
           description: Recurso obtenido exitosamente
           content:
             application/json:
@@ -277,9 +235,16 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/App'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al obtener el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     patch:
       tags: [Apps]
       summary: Actualizar aplicación
@@ -291,20 +256,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/App'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al actualizar el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     delete:
       tags: [Apps]
       summary: Eliminar aplicación
       operationId: deleteApp
       responses:
-        202:
+        204:
           description: Recurso eliminado exitosamente
           content: {}
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al eliminar el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
 
   /client:
     post:
@@ -319,25 +298,28 @@ paths:
               schema:
                   $ref: '#/components/schemas/Client'
         400:
-          description: Datos incorrectos o mala sintaxis
-          content: {}
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al crear el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     get:
       tags: [Clients]
       summary: Obtener clientes
       operationId: getClients
       parameters:
-      - name: name
-        in: query
-        schema:
-          type: string
-        description: Nombre del cliente
-        example: Municipalidad de la Ciudad de San Juan
-        required: false
+        - $ref: '#/components/parameters/Client ID'
+        - $ref: '#/components/schemas/Client Name'
+        - $ref: '#/components/parameters/App ID'
+        - $ref: '#/components/parameters/Quantity'
+        - $ref: '#/components/parameters/From'
+        - $ref: '#/components/parameters/To'
       responses:
-        201:
+        200:
           description: Recurso obtenido exitosamente
           content:
             application/json:
@@ -345,26 +327,26 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Client'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al obtener el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
 
   /client/{_id}:
     parameters:
-      - in: path
-        name: _id
-        description: El id del recurso
-        schema: 
-          type: string
-          format: uuid
-          example: 5e1a0651741b255ddda996c4
-        required: true
+      - $ref: '#/components/parameters/ID Path'
     get:
       tags: [Clients]
       summary: Obtener cliente
       operationId: getClient
       responses:
-        201:
+        200:
           description: Recurso obtenido exitosamente
           content:
             application/json:
@@ -372,9 +354,16 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Client'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al obtener el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     patch:
       tags: [Clients]
       summary: Actualizar cliente
@@ -386,31 +375,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Client'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al actualizar el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     delete:
       tags: [Clients]
       summary: Eliminar cliente
       operationId: deleteClient
       responses:
-        202:
+        204:
           description: Recurso eliminado exitosamente
           content: {}
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al eliminar el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
   
   /data:
     parameters:
-      - in: path
-        name: _id
-        description: El id del recurso
-        schema: 
-          type: string
-          format: uuid
-          example: 5e1a0651741b255ddda996c4
-        required: true
+      - $ref: '#/components/parameters/ID Path'
     post:
       tags: [Data]
       summary: Crear un dato
@@ -423,64 +419,29 @@ paths:
               schema:
                   $ref: '#/components/schemas/Data'
         400:
-          description: Datos incorrectos o mala sintaxis
-          content: {}
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al crear el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     get:
       tags: [Data]
       summary: Obtener grupo de datos
       operationId: getDataGroups
       parameters:
-      - name: dev_id
-        in: query
-        schema:
-          type: string
-        description: ID ligado al dispositivo
-        required: false
-      - name: power
-        in: query
-        schema:
-          type: number
-          format: float
-        description: Potencia media sensada en el dispositivo
-        example: 215.7
-        required: false
-      - name: energy
-        in: query
-        schema:
-          type: number
-          format: unsigned int
-        description: Consumo de energia indicada por medidor externo
-        example: 152
-        required: false
-      - name: dimming
-        in: query
-        schema:
-          type: number
-          format: unsigned int
-        description: Niver de atenuacion de la luz
-        example: 90
-        required: false
-      - name: from
-        in: query
-        schema:
-          type: string
-          format: date-time
-        description: Desde
-        example: '2018-03-20T09:12:28Z'
-        required: false
-      - name: to
-        in: query
-        schema:
-          type: string
-          format: date-time
-        description: Hasta
-        example: '2018-03-20T12:12:28Z'
-        required: false
+        - $ref: '#/components/parameters/Data ID'
+        - $ref: '#/components/parameters/Device ID'
+        - $ref: '#/components/parameters/App ID'
+        - $ref: '#/components/parameters/Client ID'
+        - $ref: '#/components/parameters/Quantity'
+        - $ref: '#/components/parameters/From'
+        - $ref: '#/components/parameters/To'
       responses:
-        201:
+        200:
           description: Recurso obtenido exitosamente
           content:
             application/json:
@@ -488,67 +449,52 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Data'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al obtener el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     delete:
       tags: [Data]
       summary: Eliminar grupos de datos
       operationId: deleteDataGroups
       parameters:
-      - name: confirm
-        in: query
-        schema:
-          type: boolean
-        description: Confirmacion
-        example: true
-        required: true
-      - name: dev_id
-        in: query
-        schema:
-          type: string
-        description: ID ligado al dispositivo
-        required: false
-      - name: from
-        in: query
-        schema:
-          type: string
-          format: date-time
-        description: Desde
-        example: '2018-03-20T09:12:28Z'
-        required: false
-      - name: to
-        in: query
-        schema:
-          type: string
-          format: date-time
-        description: Hasta
-        example: '2018-03-20T12:12:28Z'
-        required: false
+        - $ref: '#/components/parameters/Data ID'
+        - $ref: '#/components/parameters/Device ID'
+        - $ref: '#/components/parameters/App ID'
+        - $ref: '#/components/parameters/Client ID'
+        - $ref: '#/components/parameters/Quantity'
+        - $ref: '#/components/parameters/From'
+        - $ref: '#/components/parameters/To'
       responses:
-        202:
+        204:
           description: Recurso eliminado exitosamente
           content: {}
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al eliminar el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
   
   /data/{_id}:
     parameters:
-      - in: path
-        name: _id
-        description: El id del recurso
-        schema: 
-          type: string
-          format: uuid
-          example: 5e1a0651741b255ddda996c4
-        required: true
+      - $ref: '#/components/parameters/ID Path'
     get:
       tags: [Data]
       summary: Obtener datos
       operationId: getData
       responses:
-        201:
+        200:
           description: Recurso obtenido exitosamente
           content:
             application/json:
@@ -556,9 +502,16 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Data'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al obtener el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     patch:
       tags: [Data]
       summary: Actualizar datos
@@ -570,20 +523,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Data'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al actualizar el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     delete:
       tags: [Data]
       summary: Eliminar datos
       operationId: deleteData
       responses:
-        202:
+        204:
           description: Recurso eliminado exitosamente
           content: {}
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al eliminar el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
 
   /devices:
     post:
@@ -598,11 +565,15 @@ paths:
               schema:
                   $ref: '#/components/schemas/Device'
         400:
-          description: Datos incorrectos o mala sintaxis
-          content: {}
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al crear el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     get:
       tags: [Devices]
       summary: Obtener dispositivos
@@ -636,7 +607,7 @@ paths:
         description: Device-EUI unico ligado al dispositivo LoRa
         example: '0080000004001FAB'
       responses:
-        201:
+        200:
           description: Recurso obtenido exitosamente
           content:
             application/json:
@@ -644,26 +615,26 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Device'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al obtener el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
 
   /devices/{_id}:
     parameters:
-      - in: path
-        name: _id
-        description: El id del recurso
-        schema: 
-          type: string
-          format: uuid
-          example: 5e1a0651741b255ddda996c4
-        required: true
+      - $ref: '#/components/parameters/ID Path'
     get:
       tags: [Devices]
       summary: Obtener dispositivo
       operationId: getDevice
       responses:
-        201:
+        200:
           description: Recurso obtenido exitosamente
           content:
             application/json:
@@ -671,9 +642,16 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Device'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al obtener el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     patch:
       tags: [Devices]
       summary: Actualizar dispositivo
@@ -685,20 +663,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Device'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al actualizar el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     delete:
       tags: [Devices]
       summary: Eliminar dispositivo
       operationId: deleteDevice
       responses:
-        202:
+        204:
           description: Recurso eliminado exitosamente
           content: {}
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al eliminar el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
 
   /zones:
     post:
@@ -713,11 +705,15 @@ paths:
               schema:
                   $ref: '#/components/schemas/Zone'
         400:
-          description: Datos incorrectos o mala sintaxis
-          content: {}
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al crear el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     get:
       tags: [Zones]
       summary: Obtener zonas
@@ -737,7 +733,7 @@ paths:
         description: ID del dispositivo incluido en la zona
         required: false
       responses:
-        201:
+        200:
           description: Recurso obtenido exitosamente
           content:
             application/json:
@@ -745,26 +741,26 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Zone'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al obtener el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
 
   /zones/{_id}:
     parameters:
-      - in: path
-        name: _id
-        description: El id del recurso
-        schema: 
-          type: string
-          format: uuid
-          example: 5e1a0651741b255ddda996c4
-        required: true
+      - $ref: '#/components/parameters/ID Path'
     get:
       tags: [Zones]
       summary: Obtener zona
       operationId: getZone
       responses:
-        201:
+        200:
           description: Recurso obtenido exitosamente
           content:
             application/json:
@@ -772,9 +768,16 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Zone'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al obtener el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     patch:
       tags: [Zones]
       summary: Actualizar zona
@@ -786,20 +789,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Zone'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al actualizar el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     delete:
       tags: [Zones]
       summary: Eliminar zona
       operationId: deleteZone
       responses:
-        202:
+        204:
           description: Recurso eliminado exitosamente
           content: {}
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al eliminar el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
 
   /zone_grups:
     post:
@@ -814,11 +831,15 @@ paths:
               schema:
                   $ref: '#/components/schemas/Zone_Group'
         400:
-          description: Datos incorrectos o mala sintaxis
-          content: {}
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al crear el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     get:
       tags: [Zone_Groups]
       summary: Obtener grupos de zonas
@@ -832,7 +853,7 @@ paths:
         example: Grupo A
         required: false
       responses:
-        201:
+        200:
           description: Recurso obtenido exitosamente
           content:
             application/json:
@@ -840,26 +861,26 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Zone_Group'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al obtener el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
 
   /zone_grups/{_id}:
     parameters:
-      - in: path
-        name: _id
-        description: El id del recurso
-        schema: 
-          type: string
-          format: uuid
-          example: 5e1a0651741b255ddda996c4
-        required: true
+      - $ref: '#/components/parameters/ID Path'
     get:
       tags: [Zone_Groups]
       summary: Obtener grupo de zonas
       operationId: getZone_Group
       responses:
-        201:
+        200:
           description: Recurso obtenido exitosamente
           content:
             application/json:
@@ -867,9 +888,16 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Zone_Group'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al obtener el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     patch:
       tags: [Zone_Groups]
       summary: Actualizar grupo de zonas
@@ -881,24 +909,91 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Zone_Group'
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al actualizar el recurso
-          content: {}
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
     delete:
       tags: [Zone_Groups]
       summary: Eliminar grupo de zonas
       operationId: deleteZone_Group
       responses:
-        202:
+        204:
           description: Recurso eliminado exitosamente
           content: {}
+        400:
+          $ref: '#/components/responses/Bad%20Request'
+        401:
+          $ref: '#/components/responses/Unauthorized'
+        403:
+          $ref: '#/components/responses/Forbidden'
         500:
-          description: Error al eliminar el recurso
-          content: {}
-
+          $ref: '#/components/responses/Internal%20Server%20Error'
+        503:
+          $ref: '#/components/responses/Service%20Unavailable'
 
 components:
   schemas:
+    Date:
+      type: string
+      format: date-time
+      example: '2018-03-20T12:12:28Z'
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Codigo del error
+          example: IC201
+        error:
+          type: string
+          description: Nombre del error
+          example: Creacion de dispositivo
+        description:
+          type: string
+          description: Descripcion del error
+          example: No se pudo acceder a la base de datos
+    ID:
+      type: string
+      format: uuid
+      example: 5e1a0651741b255ddda996c4
+    Created:
+      type: string
+      format: date-time
+      description: Tiempo en el que fue creado
+      example: '2018-03-20T09:12:28Z'
+    Updated:
+      type: string
+      format: date-time
+      description: Tiempo en el que fue actualizado
+      example: '2018-03-20T09:12:28Z'
+
+    Location:
+      required:
+      - lat
+      - lon
+      type: object
+      description: Ubicacion en latitud y longitud
+      properties:
+        lat:
+          type: number
+          format: float
+        lon:
+          type: number
+          format: float
+      example: [-31.534976 -68.540897]
+    Geofence:
+      type: array
+      items:
+        $ref: '#/components/schemas/Location'
+      description: Geofence de la zona (conjunto de ubicaciones [lat,log] que demarcan la zona)
+      example: [-31.534976 -68.540897]
 
     Alert:
       required:
@@ -908,27 +1003,37 @@ components:
       - time
       type: object
       properties:
+        _id:
+          $ref: '#/components/schemas/Alert ID'
         dev_id:
-          type: string
-          description: ID unico ligado al dispositivo
+          $ref: '#/components/schemas/Device ID'
         type:
-          type: string
-          enum: [POWER COMMUNICATION]
-          description: Tipo de alerta
-          example: POWER
+          $ref: '#/components/schemas/Alert Type'
         code:
-          type: number
-          description: Codigo de alerta
-          example: 101
-        viewed:
-          type: boolean
-          description: Alerta vista
-          example: false
-        time:
-          type: string
-          format: date-time
-          description: Tiempo al momento de recibir el dato
-          example: '2018-03-20T09:12:28Z'
+          $ref: '#/components/schemas/Alert Code'
+        checked:
+          $ref: '#/components/schemas/Alert Check'
+        createdAt:
+          $ref: '#/components/schemas/Created'
+        updatedAt:
+          $ref: '#/components/schemas/Updated'
+    Alert ID:
+      $ref: '#/components/schemas/ID'
+      description: ID unico correspondiente a la alerta
+    Alert Type:
+      type: string
+      description: Tipo de alerta
+      format: uppercase
+      example: POWER
+    Alert Code:
+      type: string
+      description: Codigo de alerta
+      example: AP101
+    Alert Check:
+      type: boolean
+      description: Alerta vista
+      example: false
+    
 
     App:
       required:
@@ -937,30 +1042,48 @@ components:
       type: object
       properties:
         _id:
-          type: string
-          description: ID unico correspondiente a la aplicacion
-        name:
-          type: string
-          description: Nombre de la aplicacion
-          enum: [SmartCell-LoRa]
-          example: SmartCell-LoRa
+          $ref: '#/components/schemas/App ID'
+        client_id:
+          $ref: '#/components/schemas/Client ID'
+        type:
+          $ref: '#/components/schemas/App Type'
+        Tecnology:
+          $ref: '#/components/schemas/App Tecnology'
+        Hardware:
+          $ref: '#/components/schemas/App Hardware'
         vesion:
-          type: string
-          example: 1.0.1
+          $ref: '#/components/schemas/App Version'
         description:
-          type: string
-          description: Descripcion breve de la aplicacion
-          example: Aplicacion de luminarias publicas controladas por LoRaWAN
+          $ref: '#/components/schemas/App Description'
         createdAt:
-          type: string
-          format: date-time
-          description: Tiempo en el que fue creado
-          example: '2018-03-20T09:12:28Z'
+          $ref: '#/components/schemas/Created'
         updatedAt:
-          type: string
-          format: date-time
-          description: Tiempo en el que fue actualizado
-          example: '2018-03-20T09:12:28Z'
+          $ref: '#/components/schemas/Updated'
+    App ID:
+      $ref: '#/components/schemas/ID'
+      description: ID unico correspondiente a la aplicacion
+    App Type:
+      type: string
+      format: uppercase
+      description: Tipo de aplicacion por interpretacion de datos (WATER-METERING, GAS-METERING, LIGHTING, etc)
+      example: LIGHTING
+    App Tecnology:
+      type: string
+      format: uppercase
+      description: Tecnologia de comunicacion utilizado por el Hardware (LORA, ZIGBEE, etc)
+      example: LORA
+    App Hardware:
+      type: string
+      description: Hardware utilizado (SmartCell-LoRa-v1, SmartCell-LoRa-v1-Meter). Composicion => Placa -Version [-Adaptacion -Version]
+      example: SmartCell-LoRa-v1-Meter-v2
+    App Version:
+      type: string
+      description: Version de la aplicacion
+      example: 1.0.0
+    App Description:
+      type: string
+      description: Descripcion breve de la aplicacion
+      example: Aplicacion de luminarias publicas controladas por LoRaWAN
 
     Client:
       required:
@@ -968,29 +1091,24 @@ components:
       type: object
       properties:
         _id:
-          type: string
-          description: ID unico correspondiente al cliente
+          $ref: '#/components/schemas/Client ID'
         name:
-          type: string
-          description: Nombre del cliente
-          example: Municipalidad de la Ciudad de San Juan
+          $ref: '#/components/schemas/Client Name'
         apps:
           type: array
           items:
-            type: string
-            enum: [SmartCell-LoRa]
-            description: ID de las aplicaciones a las que esta suscripto el cliente
-            example: SmartCell-LoRa
+            $ref: '#/components/schemas/App ID'
         createdAt:
-          type: string
-          format: date-time
-          description: Tiempo en el que fue creado
-          example: '2018-03-20T09:12:28Z'
+          $ref: '#/components/schemas/Created'
         updatedAt:
-          type: string
-          format: date-time
-          description: Tiempo en el que fue actualizado
-          example: '2018-03-20T09:12:28Z'
+          $ref: '#/components/schemas/Updated'
+    Client ID:
+      $ref: '#/components/schemas/Client ID'
+      description: ID unico correspondiente al cliente
+    Client Name:
+      type: string
+      description: Nombre del cliente
+      example: Municipalidad de la Ciudad de San Juan
 
     Data:
       required:
@@ -998,29 +1116,38 @@ components:
       - time
       type: object
       properties:
+        _id:
+          $ref: '#/components/schemas/Data ID'
         dev_id:
-          type: string
-          description: ID unico ligado al dispositivo
+          $ref: '#/components/schemas/Power'
         power:
-          type: number
-          format: float
-          description: Potencia media sensada en el dispositivo
-          example: 215.7
-        energy:
-          type: number
-          format: unsigned int
-          description: Consumo de energia indicada por medidor externo
-          example: 152
+          $ref: '#/components/schemas/Device ID'
         dimming:
-          type: number
-          format: unsigned int
-          description: Niver de atenuacion de la luz
-          example: 90
-        time:
-          type: string
-          format: date-time
-          description: Tiempo al momento de recibir el dato
-          example: 1996-12-19T16:39:57-08:00
+          $ref: '#/components/schemas/Dimming'
+        energy:
+          $ref: '#/components/schemas/Energy'
+        createdAt:
+          $ref: '#/components/schemas/Created'
+        updatedAt:
+          $ref: '#/components/schemas/Updated'
+    Data ID:
+      $ref: '#/components/schemas/ID'
+      description: ID unico correspondiente al dato
+    Power:
+      type: number
+      format: float
+      description: Potencia media sensada en el dispositivo [W]
+      example: 215.7
+    Energy:
+      type: number
+      format: float
+      description: Consumo de energia indicada por medidor externo [wh]
+      example: 152
+    Dimming:
+      type: number
+      format: unsigned int
+      description: Niver de intensidad de la luz [%]
+      example: 90
 
     Device:
       required:
@@ -1030,48 +1157,34 @@ components:
       type: object
       properties:
         _id:
-          type: string
-          description: ID unico correspondiente al dispositivo
+          $ref: '#/components/schemas/Device ID'
         type:
-          type: string
-          format: Upper case
-          description: Tipo de dispositivo segun su tecnologia de comunicacion
-          example: LORA
+          $ref: '#/components/schemas/Device Type'
         app_id:
-          type: string
-          description: ID unico correspondiente a la aplicacion
+          $ref: '#/components/schemas/App ID'
         client_id:
-          type: string
-          description: ID unico correspondiente al cliente
+          $ref: '#/components/schemas/Client ID'
         location:
-          required:
-          - lat
-          - lon
-          type: object
-          description: Ubicacion en latitud y longitud del dispositivo
-          properties:
-            lat:
-              type: number
-              format: float
-            lon:
-              type: number
-              format: float
-          example: [-31.534976 -68.540897]
+          $ref: '#/components/schemas/Location'
         EUI:
-          type: string
-          format: byte
-          description: Device-EUI unico ligado al dispositivo LoRa
-          example: 0080000004001FAB
+          $ref: '#/components/schemas/Device EUI'
         createdAt:
-          type: string
-          format: date-time
-          description: Tiempo en el que fue creado
-          example: '2018-03-20T09:12:28Z'
+          $ref: '#/components/schemas/Created'
         updatedAt:
-          type: string
-          format: date-time
-          description: Tiempo en el que fue actualizado
-          example: '2018-03-20T09:12:28Z'
+          $ref: '#/components/schemas/Updated'
+    Device ID:
+      $ref: '#/components/schemas/ID'
+      description: ID unico del recurso. En caso de que el dispositivo sea LoRa, es aconsejable que coincida con el devEUI
+    Device Type:
+      type: string
+      format: uppercase
+      description: Tipo de dispositivo segun su tecnologia de comunicacion
+      example: LORA
+    Device EUI:
+      type: string
+      format: byte
+      description: Device-EUI unico ligado al dispositivo LoRa
+      example: 0080000004001FAB
 
     Zone:
       required:
@@ -1079,45 +1192,26 @@ components:
       type: object
       properties:
         _id:
-          type: string
-          description: ID unico correspondiente a la zona
+          $ref: '#/components/schemas/Zone ID'
         name:
-          type: string
-          description: Nombre de la zona
-          example: Zona_1
+          $ref: '#/components/schemas/Zone Name'
         devices:
           type: array
           items:
-            type: string
-            description: ID de los dispositivos incluidos en la zona
+            $ref: '#/components/schemas/Device ID'
         geofence:
-          type: array
-          items:
-            type: object
-            required:
-            - lat
-            - lon
-            description: Ubicacion en latitud y longitud
-            properties:
-                lat:
-                  type: number
-                  format: float
-                lon:
-                  type: number
-                  format: float
-          description: Geofence de la zona (conjunto de ubicaciones [lat,log] que demarcan la zona)
-          example: [-31.534976 -68.540897]
+          $ref: '#/components/schemas/Geofence'
         createdAt:
-          type: string
-          format: date-time
-          description: Tiempo en el que fue creado
-          example: '2018-03-20T09:12:28Z'
+          $ref: '#/components/schemas/Created'
         updatedAt:
-          type: string
-          format: date-time
-          description: Tiempo en el que fue actualizado
-          example: '2018-03-20T09:12:28Z'
-
+          $ref: '#/components/schemas/Updated'
+    Zone ID:
+      $ref: '#/components/schemas/ID'
+      description: ID unico correspondiente a la zona
+    Zone Name:
+      type: string
+      description: Nombre de la zona
+      example: Zona_1
 
     Zone_Group:
         required:
@@ -1126,21 +1220,13 @@ components:
         type: object
         properties:
           _id:
-            type: string
-            description: ID unico correspondiente al grupo de zonas
+            $ref: '#/components/schemas/ID'
           name:
-            type: string
-            description: Nombre del grupo de zonas
-            example: Grupo A
+            $ref: '#/components/schemas/Zone_Group ID'
           zones:
             type: array
             items:
-              type: object
-              properties:
-                  zone_id:
-                    type: string
-              description: Arreglo de zonas
-              example: [zone_id_1, zone_id_2, zone_id_3]
+              $ref: '#/components/schemas/Zone_Group ID'
           createdAt:
             type: string
             format: date-time
@@ -1151,3 +1237,171 @@ components:
             format: date-time
             description: Tiempo en el que fue actualizado
             example: '2018-03-20T09:12:28Z'
+    Zone_Group ID:
+      $ref: '#/components/schemas/ID'
+      description: ID unico correspondiente al grupo de zonas
+    Zone_Group Name:
+      type: string
+      description: Nombre del grupo de zonas
+      example: Grupo A
+
+  responses:
+    Bad Request:
+      description: El servidor no pudo interpretar la solicitud dada una sintaxis inválida [400]
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Es necesario autenticar para obtener la respuesta solicitada (autenticación es posible) [401]
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: El cliente no posee los permisos necesarios para cierto contenido [403]
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Not Found:
+      description: El servidor no pudo encontrar el contenido solicitado [404]
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Internal Server Error:
+      description: El servidor ha encontrado una situación que no sabe como manejarla [500]
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Service Unavailable:
+      description: El servidor no esta listo para manejar la petición [503]
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  parameters:
+    ID Path:
+      name: _id
+      in: path
+      required: true
+      description: ID unico del recurso
+      schema:
+        $ref: '#/components/schemas/ID'
+    ID:
+      name: _id
+      in: query
+      required: false
+      description: ID unico del recurso
+      schema:
+        $ref: '#/components/schemas/ID'
+
+    Quantity:
+      name: quantity
+      in: query
+      required: false
+      description: Cantidad de maxima de elementos
+      schema:
+        type: number
+        description: Cantidad de elementos
+        example: 50
+    From:
+      name: from
+      in: query
+      schema:
+        $ref: '#/components/schemas/Date'
+        description: Desde
+      required: false
+    To:
+      name: to
+      in: query
+      schema:
+        $ref: '#/components/schemas/Date'
+        description: Hasta
+      required: false
+
+    Alert ID:
+      name: _id
+      in: query
+      schema:
+        $ref: '#/components/schemas/Alert ID'
+      required: false
+    Alert Type:
+      name: type
+      in: query
+      schema:
+        $ref: '#/components/schemas/Alert Type'
+      required: false
+    Alert Code:
+      name: code
+      in: query
+      schema:
+        $ref: '#/components/schemas/Alert Code'
+      required: false
+    Alert Check:
+      name: checked
+      in: query
+      schema:
+        $ref: '#/components/schemas/Alert Check'
+      required: false
+
+    App ID:
+      name: _id
+      in: query
+      schema:
+        $ref: '#/components/schemas/App ID'
+      required: false
+    App Type:
+      name: type
+      in: query
+      schema:
+        $ref: '#/components/schemas/App Type'
+      required: false
+    App Tecnology:
+      name: tecnology
+      in: query
+      schema:
+        $ref: '#/components/schemas/App Tecnology'
+      required: false
+    App Hardware:
+      name: hardware
+      in: query
+      schema:
+        $ref: '#/components/schemas/App Hardware'
+      required: false
+    App Version:
+      name: version
+      in: query
+      schema:
+        $ref: '#/components/schemas/App Version'
+      required: false
+    
+    Client ID:
+      name: client_id
+      in: query
+      schema:
+        $ref: '#/components/schemas/Client ID'
+      required: false
+    Client Name:
+      name: client_id
+      in: query
+      schema:
+        $ref: '#/components/schemas/Client Name'
+      required: false
+
+    Data ID:
+      name: _id
+      in: query
+      schema:
+        $ref: '#/components/schemas/Data ID'
+      required: false
+
+    Device ID:
+      name: dev_id
+      in: query
+      schema:
+        $ref: '#/components/schemas/Device ID'
+      required: false
