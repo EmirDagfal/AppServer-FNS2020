@@ -14,7 +14,6 @@ const app = express()
 const helmet = require('helmet')
 app.use(helmet())
 
-
 // Utilizamos los middleware
 app.use(morgan('dev'))
 app.use(bodyParser.json())

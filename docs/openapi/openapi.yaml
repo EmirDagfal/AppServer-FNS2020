@@ -28,15 +28,15 @@ paths:
               schema:
                   $ref: '#/components/schemas/Alert'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     get:
       tags: [Alerts]
       summary: Obtener alertas
@@ -60,15 +60,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/Alert'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     delete:
       tags: [Alerts]
       summary: Eliminar alertas
@@ -87,15 +87,15 @@ paths:
           description: Recurso eliminado exitosamente
           content: {}
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
 
   /alerts/{_id}:
     parameters:
@@ -114,15 +114,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/Alert'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     patch:
       tags: [Alerts]
       summary: Actualizar alerta
@@ -135,15 +135,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/Alert'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     delete:
       tags: [Alerts]
       summary: Eliminar alerta
@@ -153,15 +153,15 @@ paths:
           description: Recurso eliminado exitosamente
           content: {}
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
 
   /apps:
     post:
@@ -176,15 +176,15 @@ paths:
               schema:
                   $ref: '#/components/schemas/App'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     get:
       tags: [Apps]
       summary: Obtener aplicaciónes
@@ -209,15 +209,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/App'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
 
   /apps/{_id}:
     parameters:
@@ -236,15 +236,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/App'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     patch:
       tags: [Apps]
       summary: Actualizar aplicación
@@ -257,15 +257,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/App'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     delete:
       tags: [Apps]
       summary: Eliminar aplicación
@@ -275,15 +275,15 @@ paths:
           description: Recurso eliminado exitosamente
           content: {}
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
 
   /client:
     post:
@@ -298,15 +298,15 @@ paths:
               schema:
                   $ref: '#/components/schemas/Client'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     get:
       tags: [Clients]
       summary: Obtener clientes
@@ -328,15 +328,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/Client'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
 
   /client/{_id}:
     parameters:
@@ -355,15 +355,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/Client'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     patch:
       tags: [Clients]
       summary: Actualizar cliente
@@ -376,15 +376,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/Client'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     delete:
       tags: [Clients]
       summary: Eliminar cliente
@@ -394,15 +394,15 @@ paths:
           description: Recurso eliminado exitosamente
           content: {}
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
   
   /data:
     parameters:
@@ -419,15 +419,15 @@ paths:
               schema:
                   $ref: '#/components/schemas/Data'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     get:
       tags: [Data]
       summary: Obtener grupo de datos
@@ -450,15 +450,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/Data'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     delete:
       tags: [Data]
       summary: Eliminar grupos de datos
@@ -476,15 +476,15 @@ paths:
           description: Recurso eliminado exitosamente
           content: {}
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
   
   /data/{_id}:
     parameters:
@@ -503,15 +503,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/Data'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     patch:
       tags: [Data]
       summary: Actualizar datos
@@ -524,15 +524,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/Data'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     delete:
       tags: [Data]
       summary: Eliminar datos
@@ -542,15 +542,16 @@ paths:
           description: Recurso eliminado exitosamente
           content: {}
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
+
 
   /devices:
     post:
@@ -565,47 +566,28 @@ paths:
               schema:
                   $ref: '#/components/schemas/Device'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     get:
       tags: [Devices]
       summary: Obtener dispositivos
       operationId: getDevices
       parameters:
-      - name: type
-        in: query
-        schema:
-          type: string
-          enum: [LORA]
-        description: Tipo de dispositivo segun su tecnologia de comunicacion
-        example: LORA
-        required: false
-      - name: app_id
-        in: query
-        schema:
-          type: string
-        description: ID unico correspondiente a la aplicacion
-        required: false
-      - name: client_id
-        in: query
-        schema:
-          type: string
-        description: ID unico correspondiente al cliente
-        required: false
-      - name: EUI
-        in: query
-        schema:
-          type: string
-          format: byte
-        description: Device-EUI unico ligado al dispositivo LoRa
-        example: '0080000004001FAB'
+        - $ref: '#/components/parameters/Device ID'
+        - $ref: '#/components/parameters/Device Type'
+        - $ref: '#/components/parameters/App ID'
+        - $ref: '#/components/parameters/Client ID'
+        - $ref: '#/components/parameters/Device EUI'
+        - $ref: '#/components/parameters/Quantity'
+        - $ref: '#/components/parameters/From'
+        - $ref: '#/components/parameters/To'
       responses:
         200:
           description: Recurso obtenido exitosamente
@@ -616,15 +598,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/Device'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
 
   /devices/{_id}:
     parameters:
@@ -643,15 +625,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/Device'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     patch:
       tags: [Devices]
       summary: Actualizar dispositivo
@@ -664,15 +646,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/Device'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     delete:
       tags: [Devices]
       summary: Eliminar dispositivo
@@ -682,15 +664,15 @@ paths:
           description: Recurso eliminado exitosamente
           content: {}
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
 
   /zones:
     post:
@@ -705,33 +687,26 @@ paths:
               schema:
                   $ref: '#/components/schemas/Zone'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     get:
       tags: [Zones]
       summary: Obtener zonas
       operationId: getZones
       parameters:
-      - name: name
-        in: query
-        schema:
-          type: string
-        description: Nombre de la zona
-        example: Zona_1
-        required: false
-      - name: devices
-        in: query
-        schema:
-          type: string
-        description: ID del dispositivo incluido en la zona
-        required: false
+        - $ref: '#/components/parameters/Zone ID'
+        - $ref: '#/components/parameters/Zone Name'
+        - $ref: '#/components/parameters/Device ID'
+        - $ref: '#/components/parameters/Quantity'
+        - $ref: '#/components/parameters/From'
+        - $ref: '#/components/parameters/To'
       responses:
         200:
           description: Recurso obtenido exitosamente
@@ -742,15 +717,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/Zone'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
 
   /zones/{_id}:
     parameters:
@@ -769,15 +744,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/Zone'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     patch:
       tags: [Zones]
       summary: Actualizar zona
@@ -790,15 +765,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/Zone'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     delete:
       tags: [Zones]
       summary: Eliminar zona
@@ -808,15 +783,15 @@ paths:
           description: Recurso eliminado exitosamente
           content: {}
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
 
   /zone_grups:
     post:
@@ -831,27 +806,26 @@ paths:
               schema:
                   $ref: '#/components/schemas/Zone_Group'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     get:
       tags: [Zone_Groups]
       summary: Obtener grupos de zonas
       operationId: getZone_Groups
       parameters:
-      - name: name
-        in: query
-        schema:
-          type: string
-        description: Nombre del grupo de zonas
-        example: Grupo A
-        required: false
+        - $ref: '#/components/parameters/Zone_Group ID'
+        - $ref: '#/components/parameters/Zone_Group Name'
+        - $ref: '#/components/parameters/Zone ID'
+        - $ref: '#/components/parameters/Quantity'
+        - $ref: '#/components/parameters/From'
+        - $ref: '#/components/parameters/To'
       responses:
         200:
           description: Recurso obtenido exitosamente
@@ -862,15 +836,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/Zone_Group'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
 
   /zone_grups/{_id}:
     parameters:
@@ -889,15 +863,15 @@ paths:
                 items:
                   $ref: '#/components/schemas/Zone_Group'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     patch:
       tags: [Zone_Groups]
       summary: Actualizar grupo de zonas
@@ -910,15 +884,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/Zone_Group'
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
     delete:
       tags: [Zone_Groups]
       summary: Eliminar grupo de zonas
@@ -928,15 +902,15 @@ paths:
           description: Recurso eliminado exitosamente
           content: {}
         400:
-          $ref: '#/components/responses/Bad%20Request'
+          $ref: '#/components/responses/Bad Request'
         401:
           $ref: '#/components/responses/Unauthorized'
         403:
           $ref: '#/components/responses/Forbidden'
         500:
-          $ref: '#/components/responses/Internal%20Server%20Error'
+          $ref: '#/components/responses/Internal Server Error'
         503:
-          $ref: '#/components/responses/Service%20Unavailable'
+          $ref: '#/components/responses/Service Unavailable'
 
 components:
   schemas:
@@ -1324,7 +1298,7 @@ components:
       required: false
 
     Alert ID:
-      name: _id
+      name: alert_id
       in: query
       schema:
         $ref: '#/components/schemas/Alert ID'
@@ -1349,7 +1323,7 @@ components:
       required: false
 
     App ID:
-      name: _id
+      name: app_id
       in: query
       schema:
         $ref: '#/components/schemas/App ID'
@@ -1386,22 +1360,60 @@ components:
         $ref: '#/components/schemas/Client ID'
       required: false
     Client Name:
-      name: client_id
+      name: name
       in: query
       schema:
         $ref: '#/components/schemas/Client Name'
       required: false
 
     Data ID:
-      name: _id
+      name: data_id
       in: query
       schema:
         $ref: '#/components/schemas/Data ID'
       required: false
 
     Device ID:
-      name: dev_id
+      name: device_id
       in: query
       schema:
         $ref: '#/components/schemas/Device ID'
+      required: false
+    Device Type:
+      name: type
+      in: query
+      schema:
+        $ref: '#/components/schemas/Device Type'
+      required: false
+    Device EUI:
+      name: EUI
+      in: query
+      schema:
+        $ref: '#/components/schemas/Device EUI'
+      required: false
+
+    Zone ID:
+      name: zone_id
+      in: query
+      schema:
+        $ref: '#/components/schemas/Zone ID'
+      required: false
+    Zone Name:
+      name: name
+      in: query
+      schema:
+        $ref: '#/components/schemas/Zone Name'
+      required: false
+    
+    Zone_Group ID:
+      name: zone_group_id
+      in: query
+      schema:
+        $ref: '#/components/schemas/Zone_Group ID'
+      required: false
+    Zone_Group Name:
+      name: name
+      in: query
+      schema:
+        $ref: '#/components/schemas/Zone_Group Name'
       required: false
