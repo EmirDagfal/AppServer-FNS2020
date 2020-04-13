@@ -20,6 +20,14 @@ paths:
       tags: [Alerts]
       summary: Crear una alerta
       operationId: postAlerts
+      requestBody:
+        description: Datos del recurso a crear
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Alert'
+
       responses:
         201:
           description: Recurso creado exitosamente
@@ -168,6 +176,13 @@ paths:
       tags: [Apps]
       summary: Crear una aplicación
       operationId: postApps
+      requestBody:
+        description: Datos del recurso a crear
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/App'
       responses:
         201:
           description: Recurso creado exitosamente
@@ -290,6 +305,13 @@ paths:
       tags: [Clients]
       summary: Crear un cliente
       operationId: postClients
+      requestBody:
+        description: Datos del recurso a crear
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
       responses:
         201:
           description: Recurso creado exitosamente
@@ -411,6 +433,13 @@ paths:
       tags: [Data]
       summary: Crear un dato
       operationId: postData
+      requestBody:
+        description: Datos del recurso a crear
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Data'
       responses:
         201:
           description: Recurso creado exitosamente
@@ -558,6 +587,13 @@ paths:
       tags: [Devices]
       summary: Crear un dispositivo
       operationId: postDevices
+      requestBody:
+        description: Datos del recurso a crear
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
       responses:
         201:
           description: Recurso creado exitosamente
@@ -679,6 +715,13 @@ paths:
       tags: [Zones]
       summary: Crear una zona
       operationId: postZones
+      requestBody:
+        description: Datos del recurso a crear
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Zone'
       responses:
         201:
           description: Recurso creado exitosamente
@@ -798,6 +841,13 @@ paths:
       tags: [Zone_Groups]
       summary: Crear un grupo de zonas
       operationId: postZone_Groups
+      requestBody:
+        description: Datos del recurso a crear
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Zone_Group'
       responses:
         201:
           description: Recurso creado exitosamente
