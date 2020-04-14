@@ -9,7 +9,7 @@ Para acceder a la documentacion interactiva realizada con Swagger siga los sigui
 
 1. Abra [Swagger Editor online](https://editor.swagger.io/).
 2. Borre todo el contenido del editor entrando a *File > Clear editor*.
-3. Copie todo el contenido del archivo *docs/openapi/openapi.yaml* y peguelo en el Swagger editor.
+3. Copie todo el contenido del archivo [docs/openapi/openapi.yaml](docs/openapi/openapi.yaml) y peguelo en el Swagger editor.
 4. A la derecha aparecera la lista de metodos que acepta la API junto con la descripcion de sus parametros y sus posibles respuestas.
 
 <!-- ## Diagrama de rutas
