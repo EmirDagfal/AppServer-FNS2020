@@ -335,7 +335,7 @@ paths:
       operationId: getClients
       parameters:
         - $ref: '#/components/parameters/Client_ID'
-        - $ref: '#/components/schemas/Client_Name'
+        - $ref: '#/components/parameters/Client_Name'
         - $ref: '#/components/parameters/App_ID'
         - $ref: '#/components/parameters/Quantity'
         - $ref: '#/components/parameters/From'
