@@ -20,7 +20,18 @@ const resourceSchema = new mongoose.Schema({
     },
     version: {
         type: String,
+        required: true,
         maxlength: 20,
+    },
+    // client_id: {},
+    type: {
+        type: String,
+    },
+    tecnology: {
+        type: String,
+    },
+    hardware: {
+        type: String,
     },
     description: {
         type: String,

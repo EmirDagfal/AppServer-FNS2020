@@ -28,11 +28,8 @@ const resourceSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    time: {
-        type: Date,
-        default: Date.now,
-        required: true,
-    },
+}, {
+    timestamps: true
 })
 
 // Definimos el modelo

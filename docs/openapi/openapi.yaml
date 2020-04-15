@@ -1000,8 +1000,8 @@ components:
 
     Location:
       required:
-      - lat
-      - lon
+        - lat
+        - lon
       type: object
       description: Ubicacion en latitud y longitud
       properties:
@@ -1021,9 +1021,9 @@ components:
 
     Alert:
       required:
-      - dev_id
-      - type
-      - code
+        - dev_id
+        - type
+        - code
       type: object
       properties:
         _id:
@@ -1068,6 +1068,8 @@ components:
           $ref: '#/components/schemas/App_ID'
         name:
           $ref: '#/components/schemas/App_name'
+        vesion:
+          $ref: '#/components/schemas/App_Version'
         # client_id:
         #   $ref: '#/components/schemas/Client_ID'
         type:
@@ -1076,8 +1078,6 @@ components:
           $ref: '#/components/schemas/App_Tecnology'
         Hardware:
           $ref: '#/components/schemas/App_Hardware'
-        vesion:
-          $ref: '#/components/schemas/App_Version'
         description:
           $ref: '#/components/schemas/App_Description'
         createdAt:
@@ -1141,19 +1141,19 @@ components:
 
     Data:
       required:
-      - dev_id
+        - dev_id
       type: object
       properties:
         _id:
           $ref: '#/components/schemas/Data_ID'
         dev_id:
-          $ref: '#/components/schemas/Power'
-        power:
           $ref: '#/components/schemas/Device_ID'
-        dimming:
-          $ref: '#/components/schemas/Dimming'
+        power:
+          $ref: '#/components/schemas/Power'
         energy:
           $ref: '#/components/schemas/Energy'
+        dimming:
+          $ref: '#/components/schemas/Dimming'
         createdAt:
           $ref: '#/components/schemas/Created'
         updatedAt:
@@ -1213,7 +1213,7 @@ components:
 
     Zone:
       required:
-      - name
+        - name
       type: object
       properties:
         _id:
@@ -1239,11 +1239,11 @@ components:
       example: Zona_1
 
     Zone_Group:
-        required:
+      required:
         - name
         - zones
-        type: object
-        properties:
+      type: object
+      properties:
           _id:
             $ref: '#/components/schemas/ID'
           name:

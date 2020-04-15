@@ -18,11 +18,6 @@ const resourceSchema = new mongoose.Schema({
         uppercase: true,
         required: true,
     },
-    client_id: { 
-        type: Schema.Types.ObjectId, 
-        ref: 'Client',
-        required: true,
-    },
     app_id: { 
         type: Schema.Types.ObjectId, 
         ref: 'App',
@@ -32,15 +27,15 @@ const resourceSchema = new mongoose.Schema({
         lat: Number,
         lon: Number
     },
-    created: {
-        type: Date,
-        default: Date.now(),
-        required: true,
-    },
     EUI: {
         type: String,
         maxlength: 64
     } // 64 bytes
+    // created: {
+    //     type: Date,
+    //     default: Date.now(),
+    //     required: true,
+    // },
 }, {
     timestamps: true
 })

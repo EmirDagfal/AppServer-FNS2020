@@ -29,11 +29,13 @@ const resourceSchema = new mongoose.Schema({
         min: 0,
         max: 100
     },    // 0-100
-    time: {
-        type: Date,
-        default: Date.now,
-        required: true,
-    },
+    // time: {
+    //     type: Date,
+    //     default: Date.now,
+    //     required: true,
+    // },
+}, {
+    timestamps: true
 })
 
 // Definimos el modelo
