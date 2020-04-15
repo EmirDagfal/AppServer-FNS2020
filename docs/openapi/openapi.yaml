@@ -1024,7 +1024,6 @@ components:
       - dev_id
       - type
       - code
-      - time
       type: object
       properties:
         _id:
@@ -1069,8 +1068,8 @@ components:
           $ref: '#/components/schemas/App_ID'
         name:
           $ref: '#/components/schemas/App_name'
-        client_id:
-          $ref: '#/components/schemas/Client_ID'
+        # client_id:
+        #   $ref: '#/components/schemas/Client_ID'
         type:
           $ref: '#/components/schemas/App_Type'
         Tecnology:
@@ -1143,7 +1142,6 @@ components:
     Data:
       required:
       - dev_id
-      - time
       type: object
       properties:
         _id:
@@ -1181,9 +1179,8 @@ components:
 
     Device:
       required:
-      - app_id
-      - client_id
-      - type
+        - app_id
+        - type
       type: object
       properties:
         _id:
@@ -1192,8 +1189,6 @@ components:
           $ref: '#/components/schemas/Device_Type'
         app_id:
           $ref: '#/components/schemas/App_ID'
-        client_id:
-          $ref: '#/components/schemas/Client_ID'
         location:
           $ref: '#/components/schemas/Location'
         EUI:
@@ -1413,7 +1408,7 @@ components:
       name: client_id
       in: query
       schema:
-        $ref: '#/components/schemas/Client_ID'
+        $ref: '#/components/schemas/ID'
       required: false
     Client_Name:
       name: name
