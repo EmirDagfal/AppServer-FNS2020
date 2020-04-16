@@ -300,7 +300,7 @@ paths:
         503:
           $ref: '#/components/responses/Service_Unavailable'
 
-  /client:
+  /clients:
     post:
       tags: [Clients]
       summary: Crear un cliente
@@ -360,7 +360,7 @@ paths:
         503:
           $ref: '#/components/responses/Service_Unavailable'
 
-  /client/{_id}:
+  /clients/{_id}:
     parameters:
       - $ref: '#/components/parameters/ID_Path'
     get:
