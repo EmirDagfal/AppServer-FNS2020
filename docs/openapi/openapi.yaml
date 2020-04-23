@@ -1080,6 +1080,10 @@ components:
           $ref: '#/components/schemas/App_Hardware'
         description:
           $ref: '#/components/schemas/App_Description'
+        parser_in:
+          $ref: '#/components/schemas/App_Input_Parser'
+        parser_out:
+          $ref: '#/components/schemas/App_Output_Parser'
         createdAt:
           $ref: '#/components/schemas/Created'
         updatedAt:
@@ -1113,7 +1117,14 @@ components:
       type: string
       description: Descripcion breve de la aplicacion
       example: Aplicacion de luminarias publicas controladas por LoRaWAN
-
+    App_Input_Parser:
+      type: string
+      description: Script de funcion parseadora de datos de **entrada** para la aplicacion. El script ecrito en **Java Script** e insertado en un **string**. Su parametro de entrada es un **objeto** llamado **data_in** con los datos a parsear. La funcion debe retornar un **objeto** con los datos parseador
+      example: 'return {dimming: Math.round(data_in.dim)}'
+    App_Output_Parser:
+      type: string
+      description: Script de funcion parseadora de datos de **salida** para la aplicacion. El script ecrito en **Java Script** e insertado en un **string**. Su parametro de entrada es un **objeto** llamado **data_in** con los datos a parsear. La funcion debe retornar un **objeto** con los datos parseador
+      example: 'return {current: data_in.power/220}'
     Client:
       required:
         - name
@@ -1148,12 +1159,14 @@ components:
           $ref: '#/components/schemas/Data_ID'
         dev_id:
           $ref: '#/components/schemas/Device_ID'
-        power:
-          $ref: '#/components/schemas/Power'
-        energy:
-          $ref: '#/components/schemas/Energy'
-        dimming:
-          $ref: '#/components/schemas/Dimming'
+        body:
+          $ref: '#/components/schemas/Data_Body'
+        # power:
+        #   $ref: '#/components/schemas/Power'
+        # energy:
+        #   $ref: '#/components/schemas/Energy'
+        # dimming:
+        #   $ref: '#/components/schemas/Dimming'
         createdAt:
           $ref: '#/components/schemas/Created'
         updatedAt:
@@ -1161,21 +1174,28 @@ components:
     Data_ID:
       $ref: '#/components/schemas/ID'
       description: ID unico correspondiente al dato
-    Power:
-      type: number
-      format: float
-      description: Potencia media sensada en el dispositivo [W]
-      example: 215.7
-    Energy:
-      type: number
-      format: float
-      description: Consumo de energia indicada por medidor externo [wh]
-      example: 152
-    Dimming:
-      type: number
-      format: unsigned int
-      description: Niver de intensidad de la luz [%]
-      example: 90
+    Data_Body:
+      type: object
+      description: Objeto Json con el cuerpo de  los datos. En él se encuentran los datos sensados por los distintos dispositivos
+      example:
+        power: 215.7
+        dimming: 90
+        energy: 15.3
+    # Power:
+    #   type: number
+    #   format: float
+    #   description: Potencia media sensada en el dispositivo [W]
+    #   example: 215.7
+    # Energy:
+    #   type: number
+    #   format: float
+    #   description: Consumo de energia indicada por medidor externo [wh]
+    #   example: 152
+    # Dimming:
+    #   type: number
+    #   format: unsigned int
+    #   description: Niver de intensidad de la luz [%]
+    #   example: 90
 
     Device:
       required:
@@ -1189,27 +1209,40 @@ components:
           $ref: '#/components/schemas/Device_Type'
         app_id:
           $ref: '#/components/schemas/App_ID'
+        totalizers:
+          type: array
+          description: Listado de totalizadores de datos
+          items:
+            $ref: '#/components/schemas/Totalizer'
         location:
           $ref: '#/components/schemas/Location'
-        EUI:
-          $ref: '#/components/schemas/Device_EUI'
         createdAt:
           $ref: '#/components/schemas/Created'
         updatedAt:
           $ref: '#/components/schemas/Updated'
     Device_ID:
-      $ref: '#/components/schemas/ID'
-      description: ID unico del recurso. En caso de que el dispositivo sea LoRa, es aconsejable que coincida con el devEUI
+      type: string
+      description: ID unico del recurso compuesto por la tecnologia del dispositivo (Lora, GPRS, etc), y un id propio de dicha tecnologia (devEUI en caso de Lora, MAC en caso de GPRS, etc). Formato TECNOLOGIA#idunico1234 (respetar mayusculas en el tipo de tecnologia)
+      example: LORA#0080000004001FAB
     Device_Type:
       type: string
       format: uppercase
       description: Tipo de dispositivo segun su tecnologia de comunicacion
       example: LORA
-    Device_EUI:
-      type: string
-      format: byte
-      description: Device-EUI unico ligado al dispositivo LoRa
-      example: 0080000004001FAB
+    Totalizer:
+      type: object
+      description: Valores totales referidos a un dato en particular
+      properties:
+        name:
+          type: string
+          description: Nombre de la variable
+          example: energy
+        value:
+          type: number
+          description: Valor total
+          example: 15555203.5
+        since:
+          $ref: '#/components/schemas/Updated'
 
     Zone:
       required:
