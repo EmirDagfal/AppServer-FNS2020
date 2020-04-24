@@ -620,7 +620,6 @@ paths:
         - $ref: '#/components/parameters/Device_Type'
         - $ref: '#/components/parameters/App_ID'
         - $ref: '#/components/parameters/Client_ID'
-        - $ref: '#/components/parameters/Device_EUI'
         - $ref: '#/components/parameters/Quantity'
         - $ref: '#/components/parameters/From'
         - $ref: '#/components/parameters/To'
@@ -1041,8 +1040,9 @@ components:
         updatedAt:
           $ref: '#/components/schemas/Updated'
     Alert_ID:
-      $ref: '#/components/schemas/ID'
-      description: ID unico correspondiente a la alerta
+      allOf:
+        - $ref: '#/components/schemas/ID'
+        - description: ID unico correspondiente a la alerta
     Alert_Type:
       type: string
       description: Tipo de alerta
@@ -1089,8 +1089,9 @@ components:
         updatedAt:
           $ref: '#/components/schemas/Updated'
     App_ID:
-      $ref: '#/components/schemas/ID'
-      description: ID unico correspondiente a la aplicacion
+      allOf:
+        - $ref: '#/components/schemas/ID'
+        - description: ID unico correspondiente a la aplicacion
     App_name:
       type: string
       description: Nombre para mostrar de la aplicacion
@@ -1143,8 +1144,9 @@ components:
         updatedAt:
           $ref: '#/components/schemas/Updated'
     Client_ID:
-      $ref: '#/components/schemas/ID'
-      description: ID unico correspondiente al cliente
+      allOf:
+      - $ref: '#/components/schemas/ID'
+      - description: ID unico correspondiente al cliente
     Client_Name:
       type: string
       description: Nombre del cliente
@@ -1172,8 +1174,9 @@ components:
         updatedAt:
           $ref: '#/components/schemas/Updated'
     Data_ID:
-      $ref: '#/components/schemas/ID'
-      description: ID unico correspondiente al dato
+      allOf:
+      - $ref: '#/components/schemas/ID'
+      - description: ID unico correspondiente al dato
     Data_Body:
       type: object
       description: Objeto Json con el cuerpo de  los datos. En él se encuentran los datos sensados por los distintos dispositivos
@@ -1264,8 +1267,9 @@ components:
         updatedAt:
           $ref: '#/components/schemas/Updated'
     Zone_ID:
-      $ref: '#/components/schemas/ID'
-      description: ID unico correspondiente a la zona
+      allOf:
+      - $ref: '#/components/schemas/ID'
+      - description: ID unico correspondiente a la zona
     Zone_Name:
       type: string
       description: Nombre de la zona
@@ -1296,8 +1300,9 @@ components:
             description: Tiempo en el que fue actualizado
             example: '2018-03-20T09:12:28Z'
     Zone_Group_ID:
-      $ref: '#/components/schemas/ID'
-      description: ID unico correspondiente al grupo de zonas
+      allOf:
+      - $ref: '#/components/schemas/ID'
+      - description: ID unico correspondiente al grupo de zonas
     Zone_Group_Name:
       type: string
       description: Nombre del grupo de zonas
@@ -1370,15 +1375,17 @@ components:
       name: from
       in: query
       schema:
-        $ref: '#/components/schemas/Date'
-        description: Desde
+        allOf:
+          - $ref: '#/components/schemas/Date'
+          - description: Desde
       required: false
     To:
       name: to
       in: query
       schema:
-        $ref: '#/components/schemas/Date'
-        description: Hasta
+        allOf:
+          - $ref: '#/components/schemas/Date'
+          - description: Hasta
       required: false
 
     Alert_ID:
@@ -1468,12 +1475,6 @@ components:
       in: query
       schema:
         $ref: '#/components/schemas/Device_Type'
-      required: false
-    Device_EUI:
-      name: EUI
-      in: query
-      schema:
-        $ref: '#/components/schemas/Device_EUI'
       required: false
 
     Zone_ID:
